@@ -1039,77 +1039,101 @@ setTimeout(() => {
 </body>
 </html>
 
-<!-- ===== FIRE MODE ADDON (Additive, no core code modified) ===== -->
+<!-- ===== FIRE MODE ADDON (FIXED, SAFE) ===== -->
 <script>
-// Inject FIRE nav button
+// FIRE NAV BUTTON
 (function(){
   const nav=document.querySelector('.bot-nav');
-  if(!nav||document.getElementById('nav-fire'))return;
+  if(!nav || document.getElementById('nav-fire')) return;
   const b=document.createElement('button');
   b.className='nav-btn'; b.id='nav-fire';
   b.innerHTML='<span class="nav-icon">🔥</span><span>FIRE</span>';
-  b.onclick=()=>navTo('fire');
+  b.onclick=()=>window.navTo('fire');
   nav.insertBefore(b, nav.children[1]);
 })();
-// Inject FIRE view
+
+// FIRE VIEW
 (function(){
-  if(document.getElementById('fire-view'))return;
+  if(document.getElementById('fire-view')) return;
   const v=document.createElement('div');
   v.className='scroll'; v.id='fire-view'; v.style.display='none';
-  v.innerHTML=`<span class="sec-lbl">Modo FIRE · Independencia financiera</span>
+  v.innerHTML=`
+  <span class="sec-lbl">Modo FIRE · Independencia financiera</span>
+
   <div class="summary">
-    <div class="sc"><div class="sl">Dividendos anuales</div><div class="sv gain" id="fire-div-annual">$0</div><div class="sv-sub">Estimado</div></div>
-    <div class="sc"><div class="sl">Ingreso mensual</div><div class="sv gain" id="fire-div-month">$0</div><div class="sv-sub">Promedio</div></div>
-    <div class="sc"><div class="sl">Progreso FIRE</div><div class="sv" id="fire-progress">0%</div><div class="sv-sub">Avance</div></div>
+    <div class="sc"><div class="sl">Dividendos anuales</div><div class="sv gain" id="fire-div-a">$0</div></div>
+    <div class="sc"><div class="sl">Ingreso mensual</div><div class="sv gain" id="fire-div-m">$0</div></div>
+    <div class="sc"><div class="sl">Progreso FIRE</div><div class="sv" id="fire-prog">0%</div></div>
   </div>
-  <div class="group-wrap"><div class="gcard neutral"><div class="gcard-body">
+
+  <div class="group-wrap"><div class="gcard"><div class="gcard-body">
     <div class="cgrid">
-      <div><div class="slbl">Capital actual</div><div class="sval hi" id="fire-current">$0</div></div>
-      <div><div class="slbl">Capital FIRE</div><div class="sval hi" id="fire-target">$0</div></div>
+      <div><div class="slbl">Capital actual</div><div class="sval hi" id="fire-cur">$0</div></div>
+      <div><div class="slbl">Objetivo FIRE</div><div class="sval hi" id="fire-target">$0</div></div>
       <div><div class="slbl">Años estimados</div><div class="sval hi" id="fire-years">—</div></div>
     </div>
+
     <div class="divider"></div>
-    <canvas id="fire-chart" height="180" style="width:100%;max-width:100%"></canvas>
+
+    <div class="alloc-bar" style="height:10px"><div id="fire-bar" style="height:100%;width:0%;background:var(--accent);border-radius:6px"></div></div>
+
     <div class="divider"></div>
+
     <div class="two">
-      <div class="fg"><label class="fl">Gasto mensual objetivo ($)</label><input class="fi" id="fire-expense" type="number" value="2000"></div>
-      <div class="fg"><label class="fl">Aporte mensual ($)</label><input class="fi" id="fire-contrib" type="number" value="300"></div>
+      <div class="fg"><label class="fl">Gasto mensual ($)</label><input class="fi" id="fire-exp" type="number" value="2000"></div>
+      <div class="fg"><label class="fl">Aporte mensual ($)</label><input class="fi" id="fire-cont" type="number" value="300"></div>
     </div>
+
     <div class="two">
-      <div class="fg"><label class="fl">Rendimiento anual (%)</label><input class="fi" id="fire-return" type="number" value="7"></div>
-      <div class="fg"><label class="fl">Dividend Yield (%)</label><input class="fi" id="fire-yield" type="number" value="3"></div>
+      <div class="fg"><label class="fl">Rendimiento anual (%)</label><input class="fi" id="fire-ret" type="number" value="7"></div>
+      <div class="fg"><label class="fl">Dividend Yield (%)</label><input class="fi" id="fire-yld" type="number" value="3"></div>
     </div>
-    <button class="sbtn" onclick="calcFIRE()">Recalcular</button>
+
+    <button class="sbtn" onclick="calcFIRE()">Recalcular FIRE</button>
   </div></div></div>`;
   document.body.insertBefore(v, document.querySelector('.bot-nav'));
 })();
-// FIRE logic + chart
-let fireChart;
+
+// FIRE LOGIC
 function calcFIRE(){
-  const expense=+document.getElementById('fire-expense').value||0;
-  const contrib=+document.getElementById('fire-contrib').value||0;
-  const ret=(+document.getElementById('fire-return').value||7)/100;
-  const y=(+document.getElementById('fire-yield').value||3)/100;
-  let current=0; lots.forEach(l=>{ if(l.currentPrice) current+=l.currentPrice*l.qty; });
-  const target=expense*12*25;
-  const divA=current*y, divM=divA/12, progress=target?current/target*100:0;
-  let years=0, val=current; const series=[val];
-  while(val<target&&years<80){ val=val*(1+ret)+contrib*12; series.push(val); years++; }
-  document.getElementById('fire-div-annual').textContent=fmt(divA);
-  document.getElementById('fire-div-month').textContent=fmt(divM);
-  document.getElementById('fire-progress').textContent=progress.toFixed(1)+'%';
-  document.getElementById('fire-current').textContent=fmt(current);
-  document.getElementById('fire-target').textContent=fmt(target);
-  document.getElementById('fire-years').textContent=val>=target?years+' años':'—';
-  const c=document.getElementById('fire-chart').getContext('2d');
-  if(fireChart) fireChart.destroy();
-  fireChart=new Chart(c,{type:'line',data:{labels:series.map((_,i)=>i),datasets:[{data:series,borderColor:'#7c6af7',tension:.25,fill:false}]},options:{plugins:{legend:{display:false}},scales:{x:{display:false},y:{ticks:{callback:v=>fmt(v)}}}});
+  const exp = +document.getElementById('fire-exp').value || 0;
+  const cont = +document.getElementById('fire-cont').value || 0;
+  const ret = (+document.getElementById('fire-ret').value || 7) / 100;
+  const yld = (+document.getElementById('fire-yld').value || 3) / 100;
+
+  let cur = 0;
+  if (Array.isArray(window.lots)) {
+    window.lots.forEach(l => { if (l.currentPrice) cur += l.currentPrice * l.qty; });
+  }
+
+  const target = exp * 12 * 25;
+  const divA = cur * yld;
+  const divM = divA / 12;
+  const prog = target ? (cur / target) * 100 : 0;
+
+  let sim = cur, years = 0;
+  while (sim < target && years < 80) { sim = sim * (1 + ret) + cont * 12; years++; }
+
+  document.getElementById('fire-cur').textContent = fmt(cur);
+  document.getElementById('fire-target').textContent = fmt(target);
+  document.getElementById('fire-div-a').textContent = fmt(divA);
+  document.getElementById('fire-div-m').textContent = fmt(divM);
+  document.getElementById('fire-prog').textContent = prog.toFixed(1) + '%';
+  document.getElementById('fire-years').textContent = sim >= target ? years + ' años' : '—';
+  document.getElementById('fire-bar').style.width = Math.min(prog, 100) + '%';
 }
-// Override navTo additively
-const _navTo=window.navTo;
-window.navTo=function(tab){
-  document.querySelectorAll('.scroll').forEach(v=>v.style.display='none');
-  if(tab==='fire'){ document.getElementById('fire-view').style.display='block'; document.getElementById('nav-fire')?.classList.add('active'); calcFIRE(); return; }
+
+// navTo override (safe)
+const _navTo = window.navTo;
+window.navTo = function(tab){
+  document.querySelectorAll('.scroll').forEach(s => s.style.display = 'none');
+  if(tab === 'fire'){
+    document.getElementById('fire-view').style.display = 'block';
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('nav-fire').classList.add('active');
+    calcFIRE();
+    return;
+  }
   _navTo(tab);
 };
 </script>
