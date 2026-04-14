@@ -375,8 +375,88 @@ select{-webkit-appearance:auto}
 .drip-cell.gain{color:var(--gain)}
 
 /* ═══════════════════════════════
-   TOAST
+   DCA SIMULATOR
 ═══════════════════════════════ */
+.dca-header{padding:14px 20px 12px;background:var(--bg);border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:10px}
+.dca-title-row{display:flex;align-items:center;justify-content:space-between}
+.dca-title{font-size:17px;font-weight:800;letter-spacing:-.4px}
+.dca-subtitle{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace}
+.dca-inputs-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.dca-input-box{background:var(--surface);border-radius:var(--rsm);padding:9px 12px;border:1px solid var(--border2)}
+.dca-input-box.full{grid-column:1/-1}
+.dca-input-label{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;font-family:'DM Mono',monospace;margin-bottom:4px}
+.dca-input-wrap{display:flex;align-items:center;gap:4px}
+.dca-input-prefix{font-size:13px;font-weight:600;font-family:'DM Mono',monospace;color:var(--text2)}
+.dca-input{background:none;border:none;outline:none;color:var(--text);font-size:18px;font-weight:700;font-family:'DM Mono',monospace;width:100%;padding:0}
+.dca-input::placeholder{color:var(--text3)}
+.dca-input::-webkit-inner-spin-button,.dca-input::-webkit-outer-spin-button{-webkit-appearance:none}
+
+/* Tickers section */
+.dca-tickers-section{padding:10px 20px 6px}
+.dca-tickers-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.dca-tickers-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;font-family:'DM Mono',monospace}
+.dca-add-row{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.dca-ticker-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+.dca-chip{display:flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border2);border-radius:20px;padding:5px 10px 5px 12px;cursor:default;transition:border-color .15s}
+.dca-chip.active{border-color:var(--accent);background:rgba(124,106,247,.12)}
+.dca-chip-ticker{font-size:12px;font-weight:700;font-family:'DM Mono',monospace;color:var(--text)}
+.dca-chip-pct{font-size:11px;font-family:'DM Mono',monospace;color:var(--text2)}
+.dca-chip-del{background:none;border:none;color:var(--text3);font-size:14px;cursor:pointer;padding:0;line-height:1}
+.dca-chip-del:active{color:var(--loss)}
+.dca-alloc-warning{font-size:11px;font-family:'DM Mono',monospace;color:var(--warn);margin-top:4px;display:none}
+
+/* Botón simular */
+.dca-run-btn{width:100%;height:48px;background:var(--accent);border:none;border-radius:var(--rsm);color:#fff;font-size:15px;font-weight:700;font-family:'Syne',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s;margin:12px 0 0}
+.dca-run-btn:active{opacity:.8}
+.dca-run-btn:disabled{opacity:.45}
+
+/* Results */
+.dca-results{padding:0 20px 12px}
+.dca-results-title{font-size:13px;font-weight:700;color:var(--text2);padding:14px 0 10px;border-bottom:1px solid var(--border);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+.dca-kpis{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.dca-kpi{background:var(--surface);border-radius:var(--rsm);padding:10px 12px;text-align:center}
+.dca-kpi-label{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;font-family:'DM Mono',monospace;margin-bottom:5px}
+.dca-kpi-val{font-size:13px;font-weight:700;font-family:'DM Mono',monospace;color:var(--text)}
+.dca-kpi-val.gain{color:var(--gain)}.dca-kpi-val.accent{color:var(--accent)}
+
+/* Chart SVG */
+.dca-chart-wrap{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);overflow:hidden;margin-bottom:14px}
+.dca-chart-header{padding:10px 14px 6px;display:flex;align-items:center;justify-content:space-between}
+.dca-chart-label{font-size:10px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.08em;font-family:'DM Mono',monospace}
+.dca-chart-legend{display:flex;gap:12px}
+.dca-legend-item{display:flex;align-items:center;gap:5px;font-size:9px;font-family:'DM Mono',monospace;color:var(--text3)}
+.dca-legend-dot{width:8px;height:3px;border-radius:2px;flex-shrink:0}
+
+/* Yearly table */
+.dca-year-table{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);overflow:hidden;margin-bottom:14px}
+.dca-year-thead{display:grid;grid-template-columns:44px 1fr 1fr 1fr 1fr;gap:0;background:var(--surface2);padding:7px 12px;border-bottom:1px solid var(--border)}
+.dca-year-th{font-size:9px;font-family:'DM Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;text-align:right}
+.dca-year-th:first-child{text-align:left}
+.dca-year-row{display:grid;grid-template-columns:44px 1fr 1fr 1fr 1fr;padding:9px 12px;border-bottom:1px solid var(--border);background:var(--surface);align-items:center}
+.dca-year-row:last-child{border-bottom:none}
+.dca-year-row.highlight{background:rgba(124,106,247,.08)}
+.dca-year-cell{font-size:11px;font-family:'DM Mono',monospace;color:var(--text2);text-align:right}
+.dca-year-cell:first-child{text-align:left;color:var(--text);font-weight:700}
+.dca-year-cell.gain{color:var(--gain)}.dca-year-cell.accent{color:var(--accent)}
+
+/* Ticker breakdown */
+.dca-breakdown{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);overflow:hidden;margin-bottom:14px}
+.dca-breakdown-header{background:var(--surface2);padding:8px 12px;border-bottom:1px solid var(--border);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-family:'DM Mono',monospace;color:var(--text3)}
+.dca-bk-row{display:grid;grid-template-columns:56px 1fr 1fr 1fr;padding:9px 12px;border-bottom:1px solid var(--border);background:var(--surface);align-items:center}
+.dca-bk-row:last-child{border-bottom:none}
+.dca-bk-cell{font-size:11px;font-family:'DM Mono',monospace;color:var(--text2);text-align:right}
+.dca-bk-cell:first-child{text-align:left;font-weight:700;font-size:13px;color:var(--text)}
+
+/* Comparación DRIP toggle */
+.dca-toggle-group{display:flex;gap:6px;margin-bottom:12px}
+.dca-tog-btn{flex:1;height:34px;background:var(--surface);border:1px solid var(--border2);border-radius:8px;color:var(--text3);font-size:11px;font-weight:600;font-family:'Syne',sans-serif;cursor:pointer;transition:all .15s}
+.dca-tog-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.dca-empty{text-align:center;padding:48px 20px 32px;color:var(--text3)}
+.dca-empty-icon{font-size:42px;margin-bottom:12px}
+.dca-empty-title{font-size:15px;font-weight:600;color:var(--text2);margin-bottom:6px}
+.dca-empty-sub{font-size:13px;line-height:1.7}
+
 .toast{position:fixed;bottom:calc(var(--nav-h) + var(--sb) + 14px);left:50%;transform:translateX(-50%) translateY(12px);background:var(--surface2);border:1px solid var(--border2);color:var(--text);padding:9px 16px;border-radius:10px;font-size:13px;font-family:'DM Mono',monospace;opacity:0;transition:opacity .2s,transform .2s;z-index:400;white-space:nowrap;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
@@ -444,10 +524,13 @@ select{-webkit-appearance:auto}
     <span class="nav-icon">📊</span><span>Portafolio</span>
   </button>
   <button class="nav-btn" id="nav-proyeccion" onclick="navTo('proyeccion')">
-    <span class="nav-icon">🎯</span><span>Proyección</span>
+    <span class="nav-icon">🎯</span><span>Dividendos</span>
   </button>
   <button class="nav-add" onclick="openAdd()">
     <div class="nav-add-inner">+</div>
+  </button>
+  <button class="nav-btn" id="nav-dca" onclick="navTo('dca')">
+    <span class="nav-icon">📅</span><span>DCA</span>
   </button>
   <button class="nav-btn" id="nav-settings" onclick="navTo('settings')">
     <span class="nav-icon">⚙️</span><span>Ajustes</span>
@@ -509,7 +592,144 @@ select{-webkit-appearance:auto}
 
 </div>
 
-<!-- INSTALL BANNER (Android / Chrome) -->
+<!-- ═══════════════════════════════
+     DCA SIMULATOR VIEW
+═══════════════════════════════ -->
+<div id="view-dca" style="display:none;flex:1;overflow-y:auto;padding-bottom:calc(var(--nav-h) + var(--sb) + 20px);">
+
+  <!-- Header inputs -->
+  <div class="dca-header">
+    <div class="dca-title-row">
+      <div>
+        <div class="dca-title">Simulador DCA 📅</div>
+        <div class="dca-subtitle">¿Cuánto tendré si invierto cada mes?</div>
+      </div>
+    </div>
+    <div class="dca-inputs-grid">
+      <div class="dca-input-box">
+        <div class="dca-input-label">Aporte mensual</div>
+        <div class="dca-input-wrap">
+          <span class="dca-input-prefix">$</span>
+          <input id="dca-monthly" class="dca-input" type="number" inputmode="decimal" placeholder="500" min="1" value="500"/>
+        </div>
+      </div>
+      <div class="dca-input-box">
+        <div class="dca-input-label">Años de inversión</div>
+        <div class="dca-input-wrap">
+          <input id="dca-years" class="dca-input" type="number" inputmode="numeric" placeholder="10" min="1" max="50" value="10"/>
+          <span class="dca-input-prefix" style="font-size:11px;white-space:nowrap">años</span>
+        </div>
+      </div>
+      <div class="dca-input-box">
+        <div class="dca-input-label">Rendimiento anual esperado</div>
+        <div class="dca-input-wrap">
+          <input id="dca-return" class="dca-input" type="number" inputmode="decimal" placeholder="8" min="0" max="100" value="8"/>
+          <span class="dca-input-prefix">%</span>
+        </div>
+      </div>
+      <div class="dca-input-box">
+        <div class="dca-input-label">Capital inicial (opcional)</div>
+        <div class="dca-input-wrap">
+          <span class="dca-input-prefix">$</span>
+          <input id="dca-initial" class="dca-input" type="number" inputmode="decimal" placeholder="0" min="0" value="0"/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tickers -->
+  <div class="dca-tickers-section">
+    <div class="dca-tickers-header">
+      <span class="dca-tickers-label">Tickers del portafolio</span>
+      <span style="font-size:10px;color:var(--text3);font-family:'DM Mono',monospace" id="dca-alloc-total">0%</span>
+    </div>
+    <div class="dca-add-row">
+      <input class="fi" id="dca-ticker-input" placeholder="Ticker  ej: AAPL  o elige del portafolio"
+        autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false"
+        style="flex:1;height:40px;font-size:13px"
+        onkeydown="if(event.key==='Enter')dcaAddTicker()"/>
+      <button class="sbtn-sm" onclick="dcaAddTicker()">+ Agregar</button>
+    </div>
+    <!-- Chips de tickers del portafolio actual (sugerencias) -->
+    <div id="dca-portfolio-chips" style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px"></div>
+    <!-- Chips DCA activos -->
+    <div class="dca-ticker-chips" id="dca-chips"></div>
+    <div class="dca-alloc-warning" id="dca-alloc-warning">⚠ La asignación total supera el 100%</div>
+    <button class="dca-run-btn" id="dca-run-btn" onclick="dcaRun()">
+      ▶ Simular
+    </button>
+  </div>
+
+  <!-- Results -->
+  <div class="dca-results" id="dca-results" style="display:none">
+    <div class="dca-results-title">
+      <span>Resultado de la simulación</span>
+      <span id="dca-results-label" style="font-size:10px;color:var(--text3);font-family:'DM Mono',monospace"></span>
+    </div>
+
+    <!-- KPIs -->
+    <div class="dca-kpis">
+      <div class="dca-kpi">
+        <div class="dca-kpi-label">Capital final</div>
+        <div class="dca-kpi-val gain" id="dca-kpi-final">—</div>
+      </div>
+      <div class="dca-kpi">
+        <div class="dca-kpi-label">Total invertido</div>
+        <div class="dca-kpi-val" id="dca-kpi-invested">—</div>
+      </div>
+      <div class="dca-kpi">
+        <div class="dca-kpi-label">Ganancia total</div>
+        <div class="dca-kpi-val accent" id="dca-kpi-gain">—</div>
+      </div>
+    </div>
+
+    <!-- Toggle sin/con DRIP -->
+    <div class="dca-toggle-group">
+      <button class="dca-tog-btn active" id="dca-tog-sin" onclick="dcaToggleMode('sin')">Sin reinversión</button>
+      <button class="dca-tog-btn" id="dca-tog-con" onclick="dcaToggleMode('con')">Con dividendos (DRIP)</button>
+    </div>
+
+    <!-- Gráfica SVG -->
+    <div class="dca-chart-wrap">
+      <div class="dca-chart-header">
+        <span class="dca-chart-label">Crecimiento del capital</span>
+        <div class="dca-chart-legend">
+          <span class="dca-legend-item"><span class="dca-legend-dot" style="background:var(--gain)"></span>Con DRIP</span>
+          <span class="dca-legend-item"><span class="dca-legend-dot" style="background:var(--accent)"></span>Sin DRIP</span>
+          <span class="dca-legend-item"><span class="dca-legend-dot" style="background:var(--text3)"></span>Invertido</span>
+        </div>
+      </div>
+      <svg id="dca-chart-svg" width="100%" viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" style="display:block"></svg>
+    </div>
+
+    <!-- Tabla anual -->
+    <div class="dca-year-table">
+      <div class="dca-year-thead">
+        <span class="dca-year-th" style="text-align:left">Año</span>
+        <span class="dca-year-th">Invertido</span>
+        <span class="dca-year-th">Sin DRIP</span>
+        <span class="dca-year-th">Con DRIP</span>
+        <span class="dca-year-th">Ganancia</span>
+      </div>
+      <div id="dca-year-rows"></div>
+    </div>
+
+    <!-- Desglose por ticker -->
+    <div class="dca-breakdown" id="dca-breakdown-wrap" style="display:none">
+      <div class="dca-breakdown-header">Desglose por ticker al final</div>
+      <div id="dca-breakdown-rows"></div>
+    </div>
+
+  </div><!-- /dca-results -->
+
+  <!-- Empty state -->
+  <div class="dca-empty" id="dca-empty" style="display:none">
+    <div class="dca-empty-icon">📅</div>
+    <div class="dca-empty-title">Sin tickers aún</div>
+    <div class="dca-empty-sub">Agrega al menos un ticker o usa los de tu portafolio para simular el DCA.</div>
+  </div>
+
+</div><!-- /view-dca -->
 <div id="install-banner">
   <div class="install-row">
     <div class="install-icon">📈</div>
@@ -1121,6 +1341,11 @@ function navTo(tab){
   const summary= document.querySelector('.summary');
   const alloc  = document.querySelector('.alloc-wrap');
   const projV  = document.getElementById('view-proyeccion');
+  const dcaV   = document.getElementById('view-dca');
+
+  // ocultar todo por defecto
+  projV.style.display = 'none';
+  dcaV.style.display  = 'none';
 
   if(tab === 'proyeccion'){
     scroll.style.display = 'none';
@@ -1130,11 +1355,18 @@ function navTo(tab){
     projV.style.flexDirection = 'column';
     currentView = 'proyeccion';
     renderProj();
+  } else if(tab === 'dca'){
+    scroll.style.display  = 'none';
+    summary.style.display = 'none';
+    alloc.style.display   = 'none';
+    dcaV.style.display    = 'flex';
+    dcaV.style.flexDirection = 'column';
+    currentView = 'dca';
+    dcaInit();
   } else {
     scroll.style.display = '';
     summary.style.display= '';
     alloc.style.display  = '';
-    projV.style.display  = 'none';
     currentView = tab;
     if(tab === 'settings') openSettings();
   }
@@ -1144,8 +1376,8 @@ function openAdd(){ haptic('light'); document.getElementById('ov').classList.add
 function openSettings(){ document.getElementById('ov').classList.add('open'); document.getElementById('set-sheet').classList.add('open'); if(apiKey) document.getElementById('iak').value=apiKey; renderSyncPane(); initToggles(); if(isStandalone){document.getElementById('already-installed').style.display='block';} }
 function closeAll(){
   ['ov','add-sheet','set-sheet'].forEach(id=>document.getElementById(id).classList.remove('open'));
-  // Sólo resetear nav si NO estamos en proyeccion
-  if(currentView !== 'proyeccion'){
+  // Sólo resetear nav si NO estamos en proyeccion o dca
+  if(currentView !== 'proyeccion' && currentView !== 'dca'){
     document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
     document.getElementById('nav-portfolio').classList.add('active');
   }
@@ -1390,10 +1622,300 @@ function renderDRIP(capital, annualIncome, avgYield){
 }
 
 // ═══════════════════════════════════════════
+//  SIMULADOR DCA
+// ═══════════════════════════════════════════
+let dcaTickers = [];   // [{ticker, alloc, color}]
+let dcaMode    = 'sin'; // 'sin' | 'con'
+let dcaLastResult = null;
+
+const DCA_STORAGE_KEY = 'dca_v1';
+
+function dcaLoad(){
+  try{
+    const raw = localStorage.getItem(DCA_STORAGE_KEY);
+    if(raw){ const d=JSON.parse(raw); dcaTickers=d.tickers||[]; }
+  }catch(e){}
+}
+function dcaSave(){
+  localStorage.setItem(DCA_STORAGE_KEY, JSON.stringify({tickers:dcaTickers}));
+}
+
+function dcaInit(){
+  dcaLoad();
+  dcaRenderPortfolioChips();
+  dcaRenderChips();
+  dcaUpdateAllocTotal();
+}
+
+// Chips de sugerencias del portafolio actual
+function dcaRenderPortfolioChips(){
+  const wrap = document.getElementById('dca-portfolio-chips');
+  if(!wrap) return;
+  const groups = getGroups();
+  const tickers = Object.keys(groups).filter(t => !dcaTickers.find(d=>d.ticker===t));
+  if(!tickers.length){ wrap.innerHTML='<span style="font-size:10px;color:var(--text3);font-family:\'DM Mono\',monospace">No hay tickers en el portafolio aún</span>'; return; }
+  wrap.innerHTML = tickers.map(t =>
+    `<button onclick="dcaAddFromPortfolio('${t}')" style="background:var(--surface);border:1px solid var(--border2);border-radius:20px;padding:4px 11px;font-size:11px;font-weight:700;font-family:'DM Mono',monospace;color:var(--text2);cursor:pointer">+ ${t}</button>`
+  ).join('');
+}
+
+function dcaAddFromPortfolio(ticker){
+  if(dcaTickers.find(d=>d.ticker===ticker)) return;
+  const n = dcaTickers.length;
+  dcaTickers.push({ ticker, alloc: Math.floor(100/(n+1)), color: COLORS[n % COLORS.length] });
+  // Re-balancear allocations uniformemente
+  const share = Math.floor(100/dcaTickers.length);
+  dcaTickers.forEach((d,i)=>d.alloc = i===dcaTickers.length-1 ? 100-share*(dcaTickers.length-1) : share);
+  dcaSave(); dcaRenderChips(); dcaRenderPortfolioChips(); dcaUpdateAllocTotal(); haptic('light');
+}
+
+function dcaAddTicker(){
+  const inp = document.getElementById('dca-ticker-input');
+  const t   = inp.value.trim().toUpperCase();
+  if(!t){ toast('Ingresa un ticker'); return; }
+  if(dcaTickers.find(d=>d.ticker===t)){ toast('Ya está en la lista'); inp.value=''; return; }
+  const n = dcaTickers.length;
+  dcaTickers.push({ ticker:t, alloc: Math.floor(100/(n+1)), color: COLORS[n % COLORS.length] });
+  const share = Math.floor(100/dcaTickers.length);
+  dcaTickers.forEach((d,i)=>d.alloc = i===dcaTickers.length-1 ? 100-share*(dcaTickers.length-1) : share);
+  inp.value='';
+  dcaSave(); dcaRenderChips(); dcaRenderPortfolioChips(); dcaUpdateAllocTotal(); haptic('light');
+}
+
+function dcaRemoveTicker(ticker){
+  dcaTickers = dcaTickers.filter(d=>d.ticker!==ticker);
+  if(dcaTickers.length){
+    const share = Math.floor(100/dcaTickers.length);
+    dcaTickers.forEach((d,i)=>d.alloc = i===dcaTickers.length-1 ? 100-share*(dcaTickers.length-1) : share);
+  }
+  dcaSave(); dcaRenderChips(); dcaRenderPortfolioChips(); dcaUpdateAllocTotal(); haptic('light');
+}
+
+function dcaUpdateAlloc(ticker, val){
+  const d = dcaTickers.find(x=>x.ticker===ticker);
+  if(d) d.alloc = Math.max(1, Math.min(100, parseInt(val)||0));
+  dcaSave(); dcaUpdateAllocTotal();
+}
+
+function dcaUpdateAllocTotal(){
+  const total = dcaTickers.reduce((s,d)=>s+d.alloc,0);
+  const el    = document.getElementById('dca-alloc-total');
+  const warn  = document.getElementById('dca-alloc-warning');
+  if(el) el.textContent = total+'%';
+  if(warn) warn.style.display = total>100?'block':'none';
+  if(el) el.style.color = total===100?'var(--gain)':total>100?'var(--loss)':'var(--text3)';
+}
+
+function dcaRenderChips(){
+  const wrap = document.getElementById('dca-chips');
+  if(!wrap) return;
+  if(!dcaTickers.length){ wrap.innerHTML=''; return; }
+  wrap.innerHTML = dcaTickers.map(d=>`
+    <div class="dca-chip active">
+      <span class="dca-chip-ticker" style="color:${d.color}">${d.ticker}</span>
+      <input type="number" min="1" max="100"
+        value="${d.alloc}"
+        oninput="dcaUpdateAlloc('${d.ticker}', this.value)"
+        style="width:36px;background:none;border:none;outline:none;color:var(--text2);font-size:11px;font-family:'DM Mono',monospace;text-align:center;padding:0"/>
+      <span class="dca-chip-pct">%</span>
+      <button class="dca-chip-del" onclick="dcaRemoveTicker('${d.ticker}')">×</button>
+    </div>`).join('');
+}
+
+// ── Cálculo principal DCA ──────────────────────────────────────────
+// Modelo: aportes mensuales durante N años con tasa anual r
+// Valor futuro: FV = P × ((1+r_m)^n - 1) / r_m  + C0 × (1+r_m)^n
+// Versión con DRIP: se suma yield de dividendos al rendimiento mensual
+function dcaCalc(monthly, years, annualReturn, initial, divYield=0){
+  const r_annual = annualReturn/100;
+  const r_div    = divYield/100;
+  const r_total  = r_annual + r_div;
+  const r_m      = r_total/12;
+  const n        = years * 12;
+  const rows     = [];
+
+  let capital    = initial;
+  let invested   = initial;
+
+  for(let yr=1; yr<=years; yr++){
+    for(let mo=0; mo<12; mo++){
+      capital  = capital * (1+r_m) + monthly;
+      invested += monthly;
+    }
+    rows.push({ yr, invested: invested, value: capital, gain: capital-invested });
+  }
+  return { rows, final: capital, invested, gain: capital-invested };
+}
+
+function dcaRun(){
+  const monthly = parseFloat(document.getElementById('dca-monthly').value)||0;
+  const years   = parseInt(document.getElementById('dca-years').value)||10;
+  const ret     = parseFloat(document.getElementById('dca-return').value)||0;
+  const initial = parseFloat(document.getElementById('dca-initial').value)||0;
+
+  if(monthly<=0 && initial<=0){ toast('Ingresa un aporte mensual o capital inicial'); return; }
+  if(years<1){ toast('Mínimo 1 año'); return; }
+
+  // Calcular yield promedio si hay tickers con dividendos conocidos
+  let avgDiv = 0;
+  if(dcaTickers.length && projTickers.length){
+    let found=0, sumYield=0;
+    dcaTickers.forEach(d=>{
+      const pt = projTickers.find(p=>p.ticker===d.ticker);
+      if(pt?.divYield){ sumYield += pt.divYield * (d.alloc/100); found++; }
+    });
+    if(found) avgDiv = sumYield;
+  }
+
+  const sinDRIP = dcaCalc(monthly, years, ret, initial, 0);
+  const conDRIP = dcaCalc(monthly, years, ret, initial, avgDiv);
+
+  dcaLastResult = { sinDRIP, conDRIP, monthly, years, ret, initial, avgDiv };
+
+  // KPIs (modo activo)
+  dcaUpdateKPIs();
+
+  // Gráfica
+  dcaDrawChart(sinDRIP.rows, conDRIP.rows);
+
+  // Tabla anual
+  dcaRenderYearTable(sinDRIP.rows, conDRIP.rows);
+
+  // Desglose por ticker
+  dcaRenderBreakdown(sinDRIP.final, conDRIP.final, monthly, years);
+
+  // Mostrar resultados
+  document.getElementById('dca-results').style.display='block';
+  document.getElementById('dca-results-label').textContent = `$${monthly}/mes · ${years} años · ${ret}%/año`;
+  document.getElementById('dca-results').scrollIntoView({behavior:'smooth', block:'start'});
+  haptic('success');
+}
+
+function dcaToggleMode(mode){
+  dcaMode = mode;
+  document.getElementById('dca-tog-sin').classList.toggle('active', mode==='sin');
+  document.getElementById('dca-tog-con').classList.toggle('active', mode==='con');
+  if(dcaLastResult) dcaUpdateKPIs();
+}
+
+function dcaUpdateKPIs(){
+  if(!dcaLastResult) return;
+  const r = dcaMode==='con' ? dcaLastResult.conDRIP : dcaLastResult.sinDRIP;
+  document.getElementById('dca-kpi-final').textContent    = fmt(r.final);
+  document.getElementById('dca-kpi-invested').textContent = fmt(r.invested);
+  document.getElementById('dca-kpi-gain').textContent     = '+'+fmt(r.gain);
+}
+
+// ── Gráfica SVG ───────────────────────────────────────────────────
+function dcaDrawChart(sinRows, conRows){
+  const svg   = document.getElementById('dca-chart-svg');
+  const W=360, H=180, padL=42, padR=12, padT=12, padB=28;
+  const plotW = W-padL-padR, plotH = H-padT-padB;
+
+  const allVals = [...sinRows.map(r=>r.value), ...conRows.map(r=>r.value), ...sinRows.map(r=>r.invested)];
+  const maxV = Math.max(...allVals);
+  const minV = 0;
+  const range = maxV - minV || 1;
+
+  const scaleX = i => padL + (i/(sinRows.length-1||1)) * plotW;
+  const scaleY = v => padT + plotH - ((v-minV)/range)*plotH;
+
+  const linePath = rows => rows.map((r,i)=>`${i===0?'M':'L'}${scaleX(i).toFixed(1)},${scaleY(r.value).toFixed(1)}`).join(' ');
+  const linePathInvested = rows => rows.map((r,i)=>`${i===0?'M':'L'}${scaleX(i).toFixed(1)},${scaleY(r.invested).toFixed(1)}`).join(' ');
+
+  // Area fill bajo la curva conDRIP
+  const areaConDRIP = `${conRows.map((r,i)=>`${i===0?'M':'L'}${scaleX(i).toFixed(1)},${scaleY(r.value).toFixed(1)}`).join(' ')} L${scaleX(conRows.length-1).toFixed(1)},${scaleY(0).toFixed(1)} L${scaleX(0).toFixed(1)},${scaleY(0).toFixed(1)} Z`;
+
+  // Y-axis labels
+  const yTicks = [0, 0.25, 0.5, 0.75, 1].map(f=>minV+range*f);
+  const yLabels = yTicks.map(v=>{
+    const y = scaleY(v);
+    const label = v>=1000000 ? (v/1000000).toFixed(1)+'M' : v>=1000 ? (v/1000).toFixed(0)+'K' : v.toFixed(0);
+    return `<text x="${padL-5}" y="${y.toFixed(1)}" text-anchor="end" dominant-baseline="middle" font-size="8" fill="var(--text3)" font-family="'DM Mono',monospace">${label}</text>`;
+  }).join('');
+
+  // X-axis labels (years)
+  const xLabels = sinRows.filter((_,i)=>i===0||((i+1)%Math.ceil(sinRows.length/5)===0)||(i===sinRows.length-1))
+    .map(r=>{
+      const i = r.yr-1;
+      return `<text x="${scaleX(i).toFixed(1)}" y="${(H-padB+14).toFixed(1)}" text-anchor="middle" font-size="8" fill="var(--text3)" font-family="'DM Mono',monospace">Año ${r.yr}</text>`;
+    }).join('');
+
+  svg.innerHTML = `
+    <defs>
+      <linearGradient id="dca-grad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="var(--gain)" stop-opacity="0.18"/>
+        <stop offset="100%" stop-color="var(--gain)" stop-opacity="0.01"/>
+      </linearGradient>
+    </defs>
+    <!-- Grid lines -->
+    ${[0.25,0.5,0.75,1].map(f=>`<line x1="${padL}" y1="${scaleY(minV+range*f).toFixed(1)}" x2="${W-padR}" y2="${scaleY(minV+range*f).toFixed(1)}" stroke="var(--border)" stroke-width="1"/>`).join('')}
+    <!-- Area DRIP -->
+    <path d="${areaConDRIP}" fill="url(#dca-grad)"/>
+    <!-- Invertido (gris) -->
+    <path d="${linePathInvested(sinRows)}" fill="none" stroke="var(--text3)" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <!-- Sin DRIP (accent) -->
+    <path d="${linePath(sinRows)}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+    <!-- Con DRIP (gain) -->
+    <path d="${linePath(conRows)}" fill="none" stroke="var(--gain)" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Punto final Con DRIP -->
+    <circle cx="${scaleX(conRows.length-1).toFixed(1)}" cy="${scaleY(conRows[conRows.length-1].value).toFixed(1)}" r="4" fill="var(--gain)"/>
+    <!-- Punto final Sin DRIP -->
+    <circle cx="${scaleX(sinRows.length-1).toFixed(1)}" cy="${scaleY(sinRows[sinRows.length-1].value).toFixed(1)}" r="3" fill="var(--accent)"/>
+    ${yLabels}
+    ${xLabels}
+  `;
+}
+
+// ── Tabla anual ───────────────────────────────────────────────────
+function dcaRenderYearTable(sinRows, conRows){
+  const wrap = document.getElementById('dca-year-rows');
+  const years = parseInt(document.getElementById('dca-years').value)||10;
+  // Mostrar cada año o cada 2 si hay muchos
+  const step  = years > 20 ? 5 : years > 10 ? 2 : 1;
+  const filtered = sinRows.filter(r=>r.yr%step===0||r.yr===1||r.yr===years);
+
+  wrap.innerHTML = filtered.map(r=>{
+    const con = conRows.find(c=>c.yr===r.yr);
+    const hl  = r.yr===years ? ' highlight' : '';
+    const gainDRIP = con ? con.gain : r.gain;
+    return `<div class="dca-year-row${hl}">
+      <span class="dca-year-cell">Año ${r.yr}</span>
+      <span class="dca-year-cell">${fmt(r.invested,0)}</span>
+      <span class="dca-year-cell accent">${fmt(r.value,0)}</span>
+      <span class="dca-year-cell gain">${fmt(con?.value||r.value,0)}</span>
+      <span class="dca-year-cell gain">+${fmt(gainDRIP,0)}</span>
+    </div>`;
+  }).join('');
+}
+
+// ── Desglose por ticker ───────────────────────────────────────────
+function dcaRenderBreakdown(totalSin, totalCon, monthly, years){
+  const wrap    = document.getElementById('dca-breakdown-rows');
+  const wrapEl  = document.getElementById('dca-breakdown-wrap');
+  if(!dcaTickers.length){ wrapEl.style.display='none'; return; }
+  wrapEl.style.display='block';
+  const totalInvested = monthly*12*years + (parseFloat(document.getElementById('dca-initial').value)||0);
+  wrap.innerHTML = dcaTickers.map(d=>{
+    const frac   = d.alloc/100;
+    const valSin = totalSin * frac;
+    const valCon = totalCon * frac;
+    const inv    = totalInvested * frac;
+    return `<div class="dca-bk-row">
+      <span class="dca-bk-cell" style="color:${d.color}">${d.ticker}</span>
+      <span class="dca-bk-cell" style="color:var(--text3)">${d.alloc}%</span>
+      <span class="dca-bk-cell accent">${fmt(valSin,0)}</span>
+      <span class="dca-bk-cell gain">${fmt(valCon,0)}</span>
+    </div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════
 //  BOOT
 // ═══════════════════════════════════════════
 loadLots();
 loadProj();
+dcaLoad();
 updateOnlineStatus();
 
 // Splash screen
