@@ -318,6 +318,63 @@ select{-webkit-appearance:auto}
 .toggle input:checked ~ .toggle-thumb{transform:translateX(20px);background:#fff}
 
 /* ═══════════════════════════════
+   PROYECCIÓN VIEW
+═══════════════════════════════ */
+.proj-header{padding:14px 20px 10px;background:var(--bg);border-bottom:1px solid var(--border)}
+.proj-capital-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.proj-capital-box{flex:1;background:var(--surface);border-radius:var(--rsm);padding:10px 14px;border:1px solid var(--border2)}
+.proj-cap-label{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;font-family:'DM Mono',monospace;margin-bottom:4px}
+.proj-cap-input-wrap{display:flex;align-items:center;gap:4px}
+.proj-cap-symbol{font-size:16px;font-weight:700;font-family:'DM Mono',monospace;color:var(--text2)}
+.proj-cap-input{background:none;border:none;outline:none;color:var(--text);font-size:22px;font-weight:700;font-family:'DM Mono',monospace;width:100%;padding:0}
+.proj-cap-input::placeholder{color:var(--text3)}
+.proj-refresh-btn{width:44px;height:44px;background:var(--surface);border:1px solid var(--border2);border-radius:10px;color:var(--text2);font-size:18px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.proj-refresh-btn:active{background:var(--surface2);color:var(--text)}
+.proj-add-row{display:flex;gap:8px;align-items:center}
+.proj-add-status{font-size:11px;font-family:'DM Mono',monospace;margin-top:6px;min-height:16px}
+.proj-add-status.ok{color:var(--gain)}.proj-add-status.err{color:var(--loss)}.proj-add-status.info{color:var(--text2)}
+
+/* Summary row */
+.proj-summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:12px 20px 4px}
+.psc{background:var(--surface);border-radius:var(--rsm);padding:10px 12px}
+.psl{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;font-family:'DM Mono',monospace}
+.psv{font-size:13px;font-weight:600;font-family:'DM Mono',monospace;color:var(--text)}
+.psv.gain{color:var(--gain)}
+
+/* Projection table */
+.proj-table{width:100%;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.proj-thead{display:grid;grid-template-columns:60px 1fr 72px 72px 58px 36px;gap:0;background:var(--surface2);padding:7px 10px;border-bottom:1px solid var(--border)}
+.proj-th{font-size:9px;font-family:'DM Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;text-align:right}
+.proj-th:first-child{text-align:left}
+.proj-row{display:grid;grid-template-columns:60px 1fr 72px 72px 58px 36px;gap:0;padding:10px 10px;border-bottom:1px solid var(--border);background:var(--surface);align-items:center;transition:background .15s}
+.proj-row:last-child{border-bottom:none}
+.proj-row:active{background:var(--surface2)}
+.proj-cell{font-size:12px;font-family:'DM Mono',monospace;color:var(--text2);text-align:right}
+.proj-cell:first-child{text-align:left}
+.proj-ticker{font-size:14px;font-weight:700;font-family:'DM Mono',monospace;color:var(--text)}
+.proj-yield-badge{display:inline-block;padding:2px 7px;border-radius:6px;font-size:11px;font-weight:600;font-family:'DM Mono',monospace;background:var(--gain-soft);color:var(--gain)}
+.proj-yield-badge.low{background:var(--surface2);color:var(--text3)}
+.proj-yield-badge.mid{background:rgba(247,169,106,0.15);color:var(--warn)}
+.proj-del{background:none;border:none;color:var(--text3);font-size:16px;cursor:pointer;padding:0 2px;line-height:1}
+.proj-del:active{color:var(--loss)}
+.proj-loading-cell{font-size:11px;font-family:'DM Mono',monospace;color:var(--text3);text-align:center;display:flex;align-items:center;justify-content:flex-end;gap:4px}
+.proj-empty{text-align:center;padding:48px 0 24px;color:var(--text3)}
+.proj-no-div{font-size:10px;color:var(--text3);font-family:'DM Mono',monospace}
+
+/* DRIP table */
+.drip-info{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:10px}
+.drip-table{width:100%;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.drip-thead{display:grid;grid-template-columns:60px 1fr 1fr 1fr 1fr;background:var(--surface2);padding:7px 12px;border-bottom:1px solid var(--border)}
+.drip-th{font-size:9px;font-family:'DM Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;text-align:right}
+.drip-th:first-child{text-align:left}
+.drip-row{display:grid;grid-template-columns:60px 1fr 1fr 1fr 1fr;padding:10px 12px;border-bottom:1px solid var(--border);background:var(--surface);align-items:center}
+.drip-row:last-child{border-bottom:none}
+.drip-row.total{background:var(--surface2)}
+.drip-cell{font-size:12px;font-family:'DM Mono',monospace;color:var(--text2);text-align:right}
+.drip-cell:first-child{text-align:left;color:var(--text);font-weight:600}
+.drip-cell.gain{color:var(--gain)}
+
+/* ═══════════════════════════════
    TOAST
 ═══════════════════════════════ */
 .toast{position:fixed;bottom:calc(var(--nav-h) + var(--sb) + 14px);left:50%;transform:translateX(-50%) translateY(12px);background:var(--surface2);border:1px solid var(--border2);color:var(--text);padding:9px 16px;border-radius:10px;font-size:13px;font-family:'DM Mono',monospace;opacity:0;transition:opacity .2s,transform .2s;z-index:400;white-space:nowrap;pointer-events:none}
@@ -386,6 +443,9 @@ select{-webkit-appearance:auto}
   <button class="nav-btn active" id="nav-portfolio" onclick="navTo('portfolio')">
     <span class="nav-icon">📊</span><span>Portafolio</span>
   </button>
+  <button class="nav-btn" id="nav-proyeccion" onclick="navTo('proyeccion')">
+    <span class="nav-icon">🎯</span><span>Proyección</span>
+  </button>
   <button class="nav-add" onclick="openAdd()">
     <div class="nav-add-inner">+</div>
   </button>
@@ -393,6 +453,61 @@ select{-webkit-appearance:auto}
     <span class="nav-icon">⚙️</span><span>Ajustes</span>
   </button>
 </nav>
+
+<!-- ═══════════════════════════════
+     PROYECCIÓN VIEW
+═══════════════════════════════ -->
+<div id="view-proyeccion" style="display:none;flex:1;overflow-y:auto;padding-bottom:calc(var(--nav-h) + var(--sb) + 20px);">
+
+  <!-- Capital & add ticker -->
+  <div class="proj-header">
+    <div class="proj-capital-row">
+      <div class="proj-capital-box">
+        <div class="proj-cap-label">Capital a invertir</div>
+        <div class="proj-cap-input-wrap">
+          <span class="proj-cap-symbol">$</span>
+          <input id="proj-capital" class="proj-cap-input" type="number" inputmode="decimal" placeholder="1000" value="1000" min="1" onchange="saveProj();renderProj()"/>
+        </div>
+      </div>
+      <button class="proj-refresh-btn" id="proj-refresh-btn" onclick="refreshAllProj()" title="Actualizar todos">↻</button>
+    </div>
+
+    <!-- Add ticker bar -->
+    <div class="proj-add-row">
+      <input class="fi" id="proj-ticker-input" placeholder="Agrega un ticker  ej: ARCC" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" style="flex:1;height:42px;font-size:14px" onkeydown="if(event.key==='Enter')addProjTicker()"/>
+      <button class="sbtn-sm" onclick="addProjTicker()">+ Agregar</button>
+    </div>
+    <div class="proj-add-status" id="proj-add-status"></div>
+  </div>
+
+  <!-- Summary cards -->
+  <div class="proj-summary" id="proj-summary" style="display:none">
+    <div class="psc"><div class="psl">Ingreso anual</div><div class="psv gain" id="proj-annual">$0</div></div>
+    <div class="psc"><div class="psl">Ingreso mensual</div><div class="psv gain" id="proj-monthly">$0</div></div>
+    <div class="psc"><div class="psl">Yield prom.</div><div class="psv" id="proj-yield">0%</div></div>
+  </div>
+
+  <!-- Tabla de tickers -->
+  <div style="padding:0 20px">
+    <div class="sec-lbl" style="padding:12px 0 8px">Rendimiento esperado</div>
+    <div id="proj-table-wrap">
+      <div class="proj-empty" id="proj-empty">
+        <div style="font-size:36px;margin-bottom:10px">🎯</div>
+        <div style="font-size:15px;font-weight:600;color:var(--text2);margin-bottom:6px">Sin tickers aún</div>
+        <div style="font-size:13px;line-height:1.6">Agrega los tickers que te interesan arriba para ver la proyección de dividendos con tu capital.</div>
+      </div>
+      <div id="proj-table"></div>
+    </div>
+  </div>
+
+  <!-- Proyección DRIP -->
+  <div id="proj-drip-section" style="display:none;padding:0 20px 8px">
+    <div class="sec-lbl" style="padding:12px 0 8px">Proyección con reinversión (DRIP)</div>
+    <div class="drip-info">Los dividendos recibidos se reinvierten automáticamente cada año al mismo yield promedio.</div>
+    <div id="proj-drip-table"></div>
+  </div>
+
+</div>
 
 <!-- INSTALL BANNER (Android / Chrome) -->
 <div id="install-banner">
@@ -991,21 +1106,294 @@ function handleErr(e){ if(e.message==='rate_limit') toast('Límite API. Espera 1
 // ═══════════════════════════════════════════
 //  NAVEGACIÓN
 // ═══════════════════════════════════════════
+let currentView = 'portfolio';
+
 function navTo(tab){
+  // Cerrar sheets si están abiertos
+  ['ov','add-sheet','set-sheet'].forEach(id=>document.getElementById(id).classList.remove('open'));
+
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById(`nav-${tab}`)?.classList.add('active');
-  if(tab==='settings') openSettings();
+
+  // Mostrar/ocultar vistas principales
+  const scroll = document.querySelector('.scroll');
+  const hdr    = document.querySelector('.hdr');
+  const summary= document.querySelector('.summary');
+  const alloc  = document.querySelector('.alloc-wrap');
+  const projV  = document.getElementById('view-proyeccion');
+
+  if(tab === 'proyeccion'){
+    scroll.style.display = 'none';
+    summary.style.display = 'none';
+    alloc.style.display   = 'none';
+    projV.style.display   = 'flex';
+    projV.style.flexDirection = 'column';
+    currentView = 'proyeccion';
+    renderProj();
+  } else {
+    scroll.style.display = '';
+    summary.style.display= '';
+    alloc.style.display  = '';
+    projV.style.display  = 'none';
+    currentView = tab;
+    if(tab === 'settings') openSettings();
+  }
 }
+
 function openAdd(){ haptic('light'); document.getElementById('ov').classList.add('open'); document.getElementById('add-sheet').classList.add('open'); document.getElementById('idate').value=todayStr(); setTimeout(()=>document.getElementById('it').focus(),320); }
 function openSettings(){ document.getElementById('ov').classList.add('open'); document.getElementById('set-sheet').classList.add('open'); if(apiKey) document.getElementById('iak').value=apiKey; renderSyncPane(); initToggles(); if(isStandalone){document.getElementById('already-installed').style.display='block';} }
-function closeAll(){ ['ov','add-sheet','set-sheet'].forEach(id=>document.getElementById(id).classList.remove('open')); document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active')); document.getElementById('nav-portfolio').classList.add('active'); }
+function closeAll(){
+  ['ov','add-sheet','set-sheet'].forEach(id=>document.getElementById(id).classList.remove('open'));
+  // Sólo resetear nav si NO estamos en proyeccion
+  if(currentView !== 'proyeccion'){
+    document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('nav-portfolio').classList.add('active');
+  }
+}
 function switchTab(tab){ const tabs=document.querySelectorAll('.set-tab'); tabs.forEach((t,i)=>t.classList.toggle('active',['sync','api','app'][i]===tab)); ['sync','api','app'].forEach(p=>document.getElementById(`pane-${p}`).classList.toggle('active',p===tab)); }
 function saveKey(){ const v=document.getElementById('iak').value.trim(),el=document.getElementById('ast'); if(!v){el.textContent='Ingresa una key válida.';el.className='ast err';return;} apiKey=v;localStorage.setItem('av_key',v); el.textContent='✓ Key guardada. Toca ↻ para actualizar.';el.className='ast ok'; setTimeout(closeAll,1400); }
+
+// ═══════════════════════════════════════════
+//  PROYECCIÓN DE DIVIDENDOS
+//  Modelo: projTickers = [{ticker, price, divPerShare, divYield, loading, error}]
+//  Capital: projCapital (número)
+// ═══════════════════════════════════════════
+let projTickers = [];
+let projCapital = 1000;
+
+function loadProj(){
+  const raw = localStorage.getItem('proj_v1');
+  if(raw){ try{ const d=JSON.parse(raw); projTickers=d.tickers||[]; projCapital=d.capital||1000; }catch(e){} }
+  // Limpiar campos volátiles
+  projTickers.forEach(t=>{ t.loading=false; t.error=''; });
+  // Sync capital input
+  const inp = document.getElementById('proj-capital');
+  if(inp) inp.value = projCapital;
+}
+
+function saveProj(){
+  const cap = parseFloat(document.getElementById('proj-capital')?.value) || projCapital;
+  projCapital = cap;
+  localStorage.setItem('proj_v1', JSON.stringify({
+    tickers: projTickers.map(t=>({ticker:t.ticker, price:t.price, divPerShare:t.divPerShare, divYield:t.divYield})),
+    capital: projCapital
+  }));
+}
+
+// Fetch datos de dividendos vía OVERVIEW de Alpha Vantage
+// Devuelve { price, divPerShare, divYield }
+async function fetchOverview(ticker){
+  if(!apiKey) throw new Error('no_key');
+  // Hacemos GLOBAL_QUOTE (precio) y OVERVIEW (dividendo) en paralelo
+  const [rQ, rO] = await Promise.all([
+    fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${encodeURIComponent(ticker)}&apikey=${apiKey}`),
+    fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${encodeURIComponent(ticker)}&apikey=${apiKey}`)
+  ]);
+  const [dQ, dO] = await Promise.all([rQ.json(), rO.json()]);
+
+  if(dQ['Note']||dQ['Information']||dO['Note']||dO['Information']) throw new Error('rate_limit');
+
+  const q = dQ['Global Quote'];
+  if(!q||!q['05. price']) throw new Error('not_found');
+
+  const price      = parseFloat(q['05. price']);
+  // Alpha Vantage puede devolver DividendPerShare como "0" o un número
+  const divPerShare= parseFloat(dO['DividendPerShare']||'0') || 0;
+  // DividendYield viene como "0.0666" (= 6.66%)
+  const divYield   = parseFloat(dO['DividendYield']||'0') * 100 || (price > 0 && divPerShare > 0 ? (divPerShare/price*100) : 0);
+
+  return { price, divPerShare, divYield };
+}
+
+async function addProjTicker(){
+  const input  = document.getElementById('proj-ticker-input');
+  const ticker = input.value.trim().toUpperCase();
+  const status = document.getElementById('proj-add-status');
+  if(!ticker){ status.textContent='Ingresa un símbolo.'; status.className='proj-add-status err'; return; }
+  if(projTickers.find(t=>t.ticker===ticker)){ status.textContent=`${ticker} ya está en la lista.`; status.className='proj-add-status err'; return; }
+  if(!apiKey){ 
+    // Sin API key: agregar con datos vacíos para completar manualmente
+    projTickers.push({ticker, price:null, divPerShare:null, divYield:null, loading:false, error:'Sin API Key'});
+    saveProj(); renderProj(); input.value='';
+    status.textContent=`${ticker} agregado (configura API Key para datos automáticos).`; status.className='proj-add-status info';
+    return;
+  }
+
+  // Con API key: buscar datos
+  status.textContent=`Buscando ${ticker}...`; status.className='proj-add-status info';
+  const entry = {ticker, price:null, divPerShare:null, divYield:null, loading:true, error:''};
+  projTickers.push(entry);
+  renderProj();
+
+  try{
+    // Rate limit: esperar 1.4s si ya hay otros tickers
+    if(projTickers.filter(t=>!t.loading).length > 0) await new Promise(r=>setTimeout(r,1400));
+    const data = await fetchOverview(ticker);
+    entry.price       = data.price;
+    entry.divPerShare = data.divPerShare;
+    entry.divYield    = data.divYield;
+    entry.loading     = false;
+    entry.error       = '';
+    status.textContent=`${ticker} agregado ✓`; status.className='proj-add-status ok';
+  }catch(e){
+    entry.loading = false;
+    entry.error   = e.message === 'not_found' ? 'No encontrado' : e.message === 'rate_limit' ? 'Límite API' : 'Error';
+    entry.price   = null;
+    if(e.message==='rate_limit') status.textContent='Límite de API. Espera 1 min.'; 
+    else if(e.message==='not_found') status.textContent=`${ticker}: ticker no encontrado.`;
+    else status.textContent=`Error al buscar ${ticker}.`;
+    status.className='proj-add-status err';
+  }
+
+  saveProj(); renderProj(); input.value='';
+}
+
+async function refreshAllProj(){
+  if(!apiKey){ toast('Configura la API Key en Ajustes ⚙'); return; }
+  if(!projTickers.length) return;
+  const btn = document.getElementById('proj-refresh-btn');
+  btn.textContent='⏳'; btn.disabled=true;
+  projTickers.forEach(t=>{ t.loading=true; t.error=''; });
+  renderProj(); toast('Actualizando proyección...', 5000);
+
+  for(const entry of projTickers){
+    try{
+      const data = await fetchOverview(entry.ticker);
+      entry.price       = data.price;
+      entry.divPerShare = data.divPerShare;
+      entry.divYield    = data.divYield;
+      entry.loading     = false; entry.error='';
+    }catch(e){
+      entry.loading=false;
+      entry.error = e.message==='rate_limit'?'Límite API': e.message==='not_found'?'No encontrado':'Error';
+      if(e.message==='rate_limit'){ projTickers.filter(t=>t.loading).forEach(t=>{t.loading=false;t.error='Límite API';}); break; }
+    }
+    saveProj(); renderProj();
+    await new Promise(r=>setTimeout(r,1500)); // 2 calls por ticker (QUOTE + OVERVIEW)
+  }
+  btn.textContent='↻'; btn.disabled=false; toast('Proyección actualizada ✓');
+}
+
+function removeProjTicker(ticker){
+  projTickers = projTickers.filter(t=>t.ticker!==ticker);
+  saveProj(); renderProj();
+}
+
+// Calcula ingreso de dividendo para un ticker con el capital actual
+function projIncome(entry){
+  if(!entry.price || !entry.divPerShare) return null;
+  const cap    = parseFloat(document.getElementById('proj-capital')?.value) || projCapital;
+  const shares = cap / entry.price;
+  return shares * entry.divPerShare;
+}
+
+// Yield badge CSS class
+function yieldClass(y){
+  if(y === null) return 'low';
+  if(y >= 5) return '';        // gain (verde)
+  if(y >= 3) return 'mid';    // naranja
+  return 'low';               // gris
+}
+
+function renderProj(){
+  const cap = parseFloat(document.getElementById('proj-capital')?.value) || projCapital;
+
+  const tableWrap = document.getElementById('proj-table');
+  const emptyEl   = document.getElementById('proj-empty');
+  const summaryEl = document.getElementById('proj-summary');
+  const dripSec   = document.getElementById('proj-drip-section');
+
+  if(!projTickers.length){
+    tableWrap.innerHTML=''; emptyEl.style.display='block';
+    summaryEl.style.display='none'; dripSec.style.display='none';
+    return;
+  }
+  emptyEl.style.display='none';
+
+  // Ordenar por yield desc
+  const sorted = [...projTickers].sort((a,b)=>(b.divYield||0)-(a.divYield||0));
+
+  // Tabla
+  tableWrap.innerHTML = `
+    <div class="proj-table">
+      <div class="proj-thead">
+        <span class="proj-th" style="text-align:left">Ticker</span>
+        <span class="proj-th">Precio</span>
+        <span class="proj-th">Div/acc</span>
+        <span class="proj-th">Ingreso</span>
+        <span class="proj-th">Yield</span>
+        <span class="proj-th"></span>
+      </div>
+      ${sorted.map(entry=>{
+        const income = projIncome(entry);
+        const shares = entry.price ? (cap/entry.price) : null;
+        const yClass = yieldClass(entry.divYield);
+        return`<div class="proj-row">
+          <span class="proj-ticker">${entry.ticker}</span>
+          <span class="proj-cell">${entry.loading?'<span class="dot"></span>':entry.price!=null?fmt(entry.price):entry.error?`<span style="color:var(--loss);font-size:10px">${entry.error}</span>`:'—'}</span>
+          <span class="proj-cell">${entry.loading?'…':entry.divPerShare!=null?(entry.divPerShare>0?fmt(entry.divPerShare,2):'<span class="proj-no-div">Sin div.</span>'):'-'}</span>
+          <span class="proj-cell" style="color:var(--gain)">${entry.loading?'…':income!=null?fmt(income,2):'—'}</span>
+          <span class="proj-cell"><span class="proj-yield-badge ${yClass}">${entry.loading?'…':entry.divYield!=null&&entry.divYield>0?entry.divYield.toFixed(2)+'%':'—'}</span></span>
+          <span class="proj-cell"><button class="proj-del" onclick="removeProjTicker('${entry.ticker}')">×</button></span>
+        </div>`;
+      }).join('')}
+    </div>`;
+
+  // Summary totals
+  const validEntries = projTickers.filter(t=>t.price && t.divPerShare != null && !t.loading);
+  const totalAnnual  = validEntries.reduce((s,t)=>s+(projIncome(t)||0),0);
+  const totalMonthly = totalAnnual / 12;
+  const avgYield     = validEntries.length ? validEntries.reduce((s,t)=>s+(t.divYield||0),0)/validEntries.length : 0;
+
+  if(validEntries.length){
+    summaryEl.style.display='grid';
+    document.getElementById('proj-annual').textContent  = fmt(totalAnnual,2);
+    document.getElementById('proj-monthly').textContent = fmt(totalMonthly,2);
+    document.getElementById('proj-yield').textContent   = avgYield.toFixed(2)+'%';
+    renderDRIP(cap, totalAnnual, avgYield);
+    dripSec.style.display='block';
+  } else {
+    summaryEl.style.display='none'; dripSec.style.display='none';
+  }
+}
+
+// Proyección DRIP compuesta
+// Año N: capital_acumulado × yield_prom (reinvirtiendo dividendos)
+function renderDRIP(capital, annualIncome, avgYield){
+  if(!avgYield) return;
+  const y = avgYield / 100;
+  const rows = [1,2,3,5,10].map(yr=>{
+    // Fórmula: Capital_n = capital × (1+y)^n    Ingreso_n = Capital_n × y
+    const cap_n    = capital * Math.pow(1+y, yr);
+    const income_n = cap_n * y;
+    const total_n  = cap_n - capital; // ganancia acumulada
+    return{yr, cap_n, income_n, total_n};
+  });
+
+  document.getElementById('proj-drip-table').innerHTML=`
+    <div class="drip-table">
+      <div class="drip-thead">
+        <span class="drip-th" style="text-align:left">Año</span>
+        <span class="drip-th">Capital</span>
+        <span class="drip-th">Ingreso/año</span>
+        <span class="drip-th">Ingreso/mes</span>
+        <span class="drip-th">Ganancia</span>
+      </div>
+      ${rows.map(r=>`<div class="drip-row${r.yr===1?' ':''}">
+        <span class="drip-cell">Año ${r.yr}</span>
+        <span class="drip-cell">${fmt(r.cap_n,0)}</span>
+        <span class="drip-cell gain">${fmt(r.income_n,2)}</span>
+        <span class="drip-cell gain">${fmt(r.income_n/12,2)}</span>
+        <span class="drip-cell" style="color:var(--accent)">${fmt(r.total_n,0)}</span>
+      </div>`).join('')}
+    </div>`;
+}
 
 // ═══════════════════════════════════════════
 //  BOOT
 // ═══════════════════════════════════════════
 loadLots();
+loadProj();
 updateOnlineStatus();
 
 // Splash screen
@@ -1038,103 +1426,3 @@ setTimeout(() => {
 </script>
 </body>
 </html>
-
-<!-- ===== FIRE MODE ADDON (FIXED, SAFE) ===== -->
-<script>
-// FIRE NAV BUTTON
-(function(){
-  const nav=document.querySelector('.bot-nav');
-  if(!nav || document.getElementById('nav-fire')) return;
-  const b=document.createElement('button');
-  b.className='nav-btn'; b.id='nav-fire';
-  b.innerHTML='<span class="nav-icon">🔥</span><span>FIRE</span>';
-  b.onclick=()=>window.navTo('fire');
-  nav.insertBefore(b, nav.children[1]);
-})();
-
-// FIRE VIEW
-(function(){
-  if(document.getElementById('fire-view')) return;
-  const v=document.createElement('div');
-  v.className='scroll'; v.id='fire-view'; v.style.display='none';
-  v.innerHTML=`
-  <span class="sec-lbl">Modo FIRE · Independencia financiera</span>
-
-  <div class="summary">
-    <div class="sc"><div class="sl">Dividendos anuales</div><div class="sv gain" id="fire-div-a">$0</div></div>
-    <div class="sc"><div class="sl">Ingreso mensual</div><div class="sv gain" id="fire-div-m">$0</div></div>
-    <div class="sc"><div class="sl">Progreso FIRE</div><div class="sv" id="fire-prog">0%</div></div>
-  </div>
-
-  <div class="group-wrap"><div class="gcard"><div class="gcard-body">
-    <div class="cgrid">
-      <div><div class="slbl">Capital actual</div><div class="sval hi" id="fire-cur">$0</div></div>
-      <div><div class="slbl">Objetivo FIRE</div><div class="sval hi" id="fire-target">$0</div></div>
-      <div><div class="slbl">Años estimados</div><div class="sval hi" id="fire-years">—</div></div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="alloc-bar" style="height:10px"><div id="fire-bar" style="height:100%;width:0%;background:var(--accent);border-radius:6px"></div></div>
-
-    <div class="divider"></div>
-
-    <div class="two">
-      <div class="fg"><label class="fl">Gasto mensual ($)</label><input class="fi" id="fire-exp" type="number" value="2000"></div>
-      <div class="fg"><label class="fl">Aporte mensual ($)</label><input class="fi" id="fire-cont" type="number" value="300"></div>
-    </div>
-
-    <div class="two">
-      <div class="fg"><label class="fl">Rendimiento anual (%)</label><input class="fi" id="fire-ret" type="number" value="7"></div>
-      <div class="fg"><label class="fl">Dividend Yield (%)</label><input class="fi" id="fire-yld" type="number" value="3"></div>
-    </div>
-
-    <button class="sbtn" onclick="calcFIRE()">Recalcular FIRE</button>
-  </div></div></div>`;
-  document.body.insertBefore(v, document.querySelector('.bot-nav'));
-})();
-
-// FIRE LOGIC
-function calcFIRE(){
-  const exp = +document.getElementById('fire-exp').value || 0;
-  const cont = +document.getElementById('fire-cont').value || 0;
-  const ret = (+document.getElementById('fire-ret').value || 7) / 100;
-  const yld = (+document.getElementById('fire-yld').value || 3) / 100;
-
-  let cur = 0;
-  if (Array.isArray(window.lots)) {
-    window.lots.forEach(l => { if (l.currentPrice) cur += l.currentPrice * l.qty; });
-  }
-
-  const target = exp * 12 * 25;
-  const divA = cur * yld;
-  const divM = divA / 12;
-  const prog = target ? (cur / target) * 100 : 0;
-
-  let sim = cur, years = 0;
-  while (sim < target && years < 80) { sim = sim * (1 + ret) + cont * 12; years++; }
-
-  document.getElementById('fire-cur').textContent = fmt(cur);
-  document.getElementById('fire-target').textContent = fmt(target);
-  document.getElementById('fire-div-a').textContent = fmt(divA);
-  document.getElementById('fire-div-m').textContent = fmt(divM);
-  document.getElementById('fire-prog').textContent = prog.toFixed(1) + '%';
-  document.getElementById('fire-years').textContent = sim >= target ? years + ' años' : '—';
-  document.getElementById('fire-bar').style.width = Math.min(prog, 100) + '%';
-}
-
-// navTo override (safe)
-const _navTo = window.navTo;
-window.navTo = function(tab){
-  document.querySelectorAll('.scroll').forEach(s => s.style.display = 'none');
-  if(tab === 'fire'){
-    document.getElementById('fire-view').style.display = 'block';
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('nav-fire').classList.add('active');
-    calcFIRE();
-    return;
-  }
-  _navTo(tab);
-};
-</script>
-<!-- ===== END FIRE MODE ADDON ===== -->
