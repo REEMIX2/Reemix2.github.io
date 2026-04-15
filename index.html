@@ -627,7 +627,7 @@ select{-webkit-appearance:auto}
           <span class="dca-input-prefix">%</span>
         </div>
       </div>
-      <div class="dca-input-box">
+      <div class="dca-input-box full">
         <div class="dca-input-label">Capital inicial (opcional)</div>
         <div class="dca-input-wrap">
           <span class="dca-input-prefix">$</span>
@@ -1667,6 +1667,7 @@ function dcaAddFromPortfolio(ticker){
   const share = Math.floor(100/dcaTickers.length);
   dcaTickers.forEach((d,i)=>d.alloc = i===dcaTickers.length-1 ? 100-share*(dcaTickers.length-1) : share);
   dcaSave(); dcaRenderChips(); dcaRenderPortfolioChips(); dcaUpdateAllocTotal(); haptic('light');
+  if(dcaLastResult) dcaRun();
 }
 
 function dcaAddTicker(){
@@ -1680,6 +1681,7 @@ function dcaAddTicker(){
   dcaTickers.forEach((d,i)=>d.alloc = i===dcaTickers.length-1 ? 100-share*(dcaTickers.length-1) : share);
   inp.value='';
   dcaSave(); dcaRenderChips(); dcaRenderPortfolioChips(); dcaUpdateAllocTotal(); haptic('light');
+  if(dcaLastResult) dcaRun();
 }
 
 function dcaRemoveTicker(ticker){
@@ -1689,6 +1691,7 @@ function dcaRemoveTicker(ticker){
     dcaTickers.forEach((d,i)=>d.alloc = i===dcaTickers.length-1 ? 100-share*(dcaTickers.length-1) : share);
   }
   dcaSave(); dcaRenderChips(); dcaRenderPortfolioChips(); dcaUpdateAllocTotal(); haptic('light');
+  if(dcaLastResult) dcaRun();
 }
 
 function dcaUpdateAlloc(ticker, val){
@@ -1752,19 +1755,21 @@ function dcaRun(){
   const years   = parseInt(document.getElementById('dca-years').value)||10;
   const ret     = parseFloat(document.getElementById('dca-return').value)||0;
   const initial = parseFloat(document.getElementById('dca-initial').value)||0;
+  const divYield= parseFloat(document.getElementById('dca-div-yield').value)||0;
 
   if(monthly<=0 && initial<=0){ toast('Ingresa un aporte mensual o capital inicial'); return; }
   if(years<1){ toast('Mínimo 1 año'); return; }
 
-  // Calcular yield promedio si hay tickers con dividendos conocidos
-  let avgDiv = 0;
+  // Si hay tickers en proyección que coincidan, su yield sobreescribe el manual (más preciso)
+  let avgDiv = divYield; // default: campo manual
   if(dcaTickers.length && projTickers.length){
-    let found=0, sumYield=0;
+    let totalAlloc=0, sumYield=0;
     dcaTickers.forEach(d=>{
       const pt = projTickers.find(p=>p.ticker===d.ticker);
-      if(pt?.divYield){ sumYield += pt.divYield * (d.alloc/100); found++; }
+      if(pt?.divYield){ sumYield += pt.divYield * (d.alloc/100); totalAlloc += d.alloc; }
     });
-    if(found) avgDiv = sumYield;
+    // Solo sobreescribir si al menos 1 ticker tiene datos reales de dividendos
+    if(totalAlloc>0) avgDiv = sumYield;
   }
 
   const sinDRIP = dcaCalc(monthly, years, ret, initial, 0);
@@ -1772,7 +1777,15 @@ function dcaRun(){
 
   dcaLastResult = { sinDRIP, conDRIP, monthly, years, ret, initial, avgDiv };
 
-  // KPIs (modo activo)
+  dcaRenderResults();
+  haptic('success');
+}
+
+function dcaRenderResults(){
+  if(!dcaLastResult) return;
+  const { sinDRIP, conDRIP, monthly, years, ret, avgDiv } = dcaLastResult;
+
+  // KPIs
   dcaUpdateKPIs();
 
   // Gráfica
@@ -1784,18 +1797,24 @@ function dcaRun(){
   // Desglose por ticker
   dcaRenderBreakdown(sinDRIP.final, conDRIP.final, monthly, years);
 
+  // Label
+  const divLabel = avgDiv>0 ? ` · DRIP ${avgDiv.toFixed(1)}%` : '';
+  document.getElementById('dca-results-label').textContent = `$${monthly}/mes · ${years} años · ${ret}%/año${divLabel}`;
+
   // Mostrar resultados
   document.getElementById('dca-results').style.display='block';
-  document.getElementById('dca-results-label').textContent = `$${monthly}/mes · ${years} años · ${ret}%/año`;
   document.getElementById('dca-results').scrollIntoView({behavior:'smooth', block:'start'});
-  haptic('success');
 }
 
 function dcaToggleMode(mode){
   dcaMode = mode;
   document.getElementById('dca-tog-sin').classList.toggle('active', mode==='sin');
   document.getElementById('dca-tog-con').classList.toggle('active', mode==='con');
-  if(dcaLastResult) dcaUpdateKPIs();
+  if(dcaLastResult){
+    dcaUpdateKPIs();
+    // Re-dibujar gráfica destacando la curva activa
+    dcaDrawChart(dcaLastResult.sinDRIP.rows, dcaLastResult.conDRIP.rows);
+  }
 }
 
 function dcaUpdateKPIs(){
