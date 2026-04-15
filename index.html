@@ -317,6 +317,51 @@ select{-webkit-appearance:auto}
 .toggle input:checked + .toggle-track{background:var(--accent)}
 .toggle input:checked ~ .toggle-thumb{transform:translateX(20px);background:#fff}
 
+/* Proj sub-tabs */
+.proj-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);background:var(--bg)}
+.proj-tab{flex:1;padding:11px 0;background:none;border:none;border-bottom:2px solid transparent;color:var(--text3);font-size:13px;font-family:'Syne',sans-serif;font-weight:600;cursor:pointer;transition:color .15s,border-color .15s}
+.proj-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.proj-tab:active{opacity:.7}
+
+/* Import from portfolio btn */
+.proj-import-btn{width:100%;padding:10px 14px;background:var(--surface2);border:1px solid var(--accent);border-radius:var(--rsm);color:var(--accent);font-size:13px;font-weight:600;font-family:'Syne',sans-serif;cursor:pointer;text-align:left;display:flex;align-items:center;gap:8px}
+.proj-import-btn:active{opacity:.7}
+.proj-import-info{font-size:11px;font-family:'DM Mono',monospace;margin-top:6px;min-height:16px;color:var(--text2)}
+
+/* Mode switcher */
+.proj-mode-row{display:flex;gap:0;background:var(--surface);border-radius:10px;padding:3px;border:1px solid var(--border2)}
+.proj-mode-btn{flex:1;padding:7px 0;background:none;border:none;border-radius:8px;color:var(--text3);font-size:11px;font-family:'Syne',sans-serif;font-weight:600;cursor:pointer;transition:background .15s,color .15s}
+.proj-mode-btn.active{background:var(--accent);color:#fff}
+
+/* DCA presets */
+.dca-presets{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.dca-preset{background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:9px 6px;color:var(--text2);font-size:11px;font-family:'Syne',sans-serif;font-weight:600;cursor:pointer;text-align:center;line-height:1.4;transition:border-color .15s,color .15s}
+.dca-preset span{display:block;color:var(--text3);font-size:10px;font-family:'DM Mono',monospace;margin-top:2px}
+.dca-preset.active{border-color:var(--accent);color:var(--accent)}
+.dca-preset.active span{color:var(--accent)}
+.dca-preset:active{opacity:.7}
+
+/* DCA table */
+.dca-tbl{width:100%;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.dca-thead{display:grid;grid-template-columns:44px 1fr 1fr 1fr;background:var(--surface2);padding:7px 12px;border-bottom:1px solid var(--border)}
+.dca-th{font-size:9px;font-family:'DM Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;text-align:right}
+.dca-th:first-child{text-align:left}
+.dca-row{display:grid;grid-template-columns:44px 1fr 1fr 1fr;padding:9px 12px;border-bottom:1px solid var(--border);background:var(--surface);align-items:center}
+.dca-row:last-child{border-bottom:none}
+.dca-row.milestone{background:var(--surface2)}
+.dca-cell{font-size:12px;font-family:'DM Mono',monospace;color:var(--text2);text-align:right}
+.dca-cell:first-child{text-align:left;color:var(--text);font-weight:600}
+.dca-cell.accent{color:var(--accent);font-weight:600}
+.dca-cell.gain{color:var(--gain)}
+
+/* DCA bar chart */
+.dca-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.dca-bar-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--text3);width:38px;text-align:right;flex-shrink:0}
+.dca-bar-track{flex:1;height:14px;background:var(--surface2);border-radius:3px;overflow:hidden;position:relative}
+.dca-bar-contributed{height:100%;background:var(--text3);border-radius:3px;position:absolute;left:0;top:0;transition:width .3s}
+.dca-bar-profit{height:100%;background:var(--gain);border-radius:0 3px 3px 0;position:absolute;top:0;transition:width .3s,left .3s}
+.dca-bar-val{font-size:10px;font-family:'DM Mono',monospace;color:var(--text2);width:70px;text-align:right;flex-shrink:0}
+
 /* ═══════════════════════════════
    PROYECCIÓN VIEW
 ═══════════════════════════════ */
@@ -375,88 +420,8 @@ select{-webkit-appearance:auto}
 .drip-cell.gain{color:var(--gain)}
 
 /* ═══════════════════════════════
-   DCA SIMULATOR
+   TOAST
 ═══════════════════════════════ */
-.dca-header{padding:14px 20px 12px;background:var(--bg);border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:10px}
-.dca-title-row{display:flex;align-items:center;justify-content:space-between}
-.dca-title{font-size:17px;font-weight:800;letter-spacing:-.4px}
-.dca-subtitle{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace}
-.dca-inputs-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.dca-input-box{background:var(--surface);border-radius:var(--rsm);padding:9px 12px;border:1px solid var(--border2)}
-.dca-input-box.full{grid-column:1/-1}
-.dca-input-label{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;font-family:'DM Mono',monospace;margin-bottom:4px}
-.dca-input-wrap{display:flex;align-items:center;gap:4px}
-.dca-input-prefix{font-size:13px;font-weight:600;font-family:'DM Mono',monospace;color:var(--text2)}
-.dca-input{background:none;border:none;outline:none;color:var(--text);font-size:18px;font-weight:700;font-family:'DM Mono',monospace;width:100%;padding:0}
-.dca-input::placeholder{color:var(--text3)}
-.dca-input::-webkit-inner-spin-button,.dca-input::-webkit-outer-spin-button{-webkit-appearance:none}
-
-/* Tickers section */
-.dca-tickers-section{padding:10px 20px 6px}
-.dca-tickers-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.dca-tickers-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;font-family:'DM Mono',monospace}
-.dca-add-row{display:flex;gap:8px;align-items:center;margin-bottom:10px}
-.dca-ticker-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
-.dca-chip{display:flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border2);border-radius:20px;padding:5px 10px 5px 12px;cursor:default;transition:border-color .15s}
-.dca-chip.active{border-color:var(--accent);background:rgba(124,106,247,.12)}
-.dca-chip-ticker{font-size:12px;font-weight:700;font-family:'DM Mono',monospace;color:var(--text)}
-.dca-chip-pct{font-size:11px;font-family:'DM Mono',monospace;color:var(--text2)}
-.dca-chip-del{background:none;border:none;color:var(--text3);font-size:14px;cursor:pointer;padding:0;line-height:1}
-.dca-chip-del:active{color:var(--loss)}
-.dca-alloc-warning{font-size:11px;font-family:'DM Mono',monospace;color:var(--warn);margin-top:4px;display:none}
-
-/* Botón simular */
-.dca-run-btn{width:100%;height:48px;background:var(--accent);border:none;border-radius:var(--rsm);color:#fff;font-size:15px;font-weight:700;font-family:'Syne',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s;margin:12px 0 0}
-.dca-run-btn:active{opacity:.8}
-.dca-run-btn:disabled{opacity:.45}
-
-/* Results */
-.dca-results{padding:0 20px 12px}
-.dca-results-title{font-size:13px;font-weight:700;color:var(--text2);padding:14px 0 10px;border-bottom:1px solid var(--border);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
-.dca-kpis{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}
-.dca-kpi{background:var(--surface);border-radius:var(--rsm);padding:10px 12px;text-align:center}
-.dca-kpi-label{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;font-family:'DM Mono',monospace;margin-bottom:5px}
-.dca-kpi-val{font-size:13px;font-weight:700;font-family:'DM Mono',monospace;color:var(--text)}
-.dca-kpi-val.gain{color:var(--gain)}.dca-kpi-val.accent{color:var(--accent)}
-
-/* Chart SVG */
-.dca-chart-wrap{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);overflow:hidden;margin-bottom:14px}
-.dca-chart-header{padding:10px 14px 6px;display:flex;align-items:center;justify-content:space-between}
-.dca-chart-label{font-size:10px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.08em;font-family:'DM Mono',monospace}
-.dca-chart-legend{display:flex;gap:12px}
-.dca-legend-item{display:flex;align-items:center;gap:5px;font-size:9px;font-family:'DM Mono',monospace;color:var(--text3)}
-.dca-legend-dot{width:8px;height:3px;border-radius:2px;flex-shrink:0}
-
-/* Yearly table */
-.dca-year-table{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);overflow:hidden;margin-bottom:14px}
-.dca-year-thead{display:grid;grid-template-columns:44px 1fr 1fr 1fr 1fr;gap:0;background:var(--surface2);padding:7px 12px;border-bottom:1px solid var(--border)}
-.dca-year-th{font-size:9px;font-family:'DM Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;text-align:right}
-.dca-year-th:first-child{text-align:left}
-.dca-year-row{display:grid;grid-template-columns:44px 1fr 1fr 1fr 1fr;padding:9px 12px;border-bottom:1px solid var(--border);background:var(--surface);align-items:center}
-.dca-year-row:last-child{border-bottom:none}
-.dca-year-row.highlight{background:rgba(124,106,247,.08)}
-.dca-year-cell{font-size:11px;font-family:'DM Mono',monospace;color:var(--text2);text-align:right}
-.dca-year-cell:first-child{text-align:left;color:var(--text);font-weight:700}
-.dca-year-cell.gain{color:var(--gain)}.dca-year-cell.accent{color:var(--accent)}
-
-/* Ticker breakdown */
-.dca-breakdown{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);overflow:hidden;margin-bottom:14px}
-.dca-breakdown-header{background:var(--surface2);padding:8px 12px;border-bottom:1px solid var(--border);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-family:'DM Mono',monospace;color:var(--text3)}
-.dca-bk-row{display:grid;grid-template-columns:56px 1fr 1fr 1fr;padding:9px 12px;border-bottom:1px solid var(--border);background:var(--surface);align-items:center}
-.dca-bk-row:last-child{border-bottom:none}
-.dca-bk-cell{font-size:11px;font-family:'DM Mono',monospace;color:var(--text2);text-align:right}
-.dca-bk-cell:first-child{text-align:left;font-weight:700;font-size:13px;color:var(--text)}
-
-/* Comparación DRIP toggle */
-.dca-toggle-group{display:flex;gap:6px;margin-bottom:12px}
-.dca-tog-btn{flex:1;height:34px;background:var(--surface);border:1px solid var(--border2);border-radius:8px;color:var(--text3);font-size:11px;font-weight:600;font-family:'Syne',sans-serif;cursor:pointer;transition:all .15s}
-.dca-tog-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
-
-.dca-empty{text-align:center;padding:48px 20px 32px;color:var(--text3)}
-.dca-empty-icon{font-size:42px;margin-bottom:12px}
-.dca-empty-title{font-size:15px;font-weight:600;color:var(--text2);margin-bottom:6px}
-.dca-empty-sub{font-size:13px;line-height:1.7}
-
 .toast{position:fixed;bottom:calc(var(--nav-h) + var(--sb) + 14px);left:50%;transform:translateX(-50%) translateY(12px);background:var(--surface2);border:1px solid var(--border2);color:var(--text);padding:9px 16px;border-radius:10px;font-size:13px;font-family:'DM Mono',monospace;opacity:0;transition:opacity .2s,transform .2s;z-index:400;white-space:nowrap;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
@@ -524,13 +489,10 @@ select{-webkit-appearance:auto}
     <span class="nav-icon">📊</span><span>Portafolio</span>
   </button>
   <button class="nav-btn" id="nav-proyeccion" onclick="navTo('proyeccion')">
-    <span class="nav-icon">🎯</span><span>Dividendos</span>
+    <span class="nav-icon">🎯</span><span>Proyección</span>
   </button>
   <button class="nav-add" onclick="openAdd()">
     <div class="nav-add-inner">+</div>
-  </button>
-  <button class="nav-btn" id="nav-dca" onclick="navTo('dca')">
-    <span class="nav-icon">📅</span><span>DCA</span>
   </button>
   <button class="nav-btn" id="nav-settings" onclick="navTo('settings')">
     <span class="nav-icon">⚙️</span><span>Ajustes</span>
@@ -542,194 +504,139 @@ select{-webkit-appearance:auto}
 ═══════════════════════════════ -->
 <div id="view-proyeccion" style="display:none;flex:1;overflow-y:auto;padding-bottom:calc(var(--nav-h) + var(--sb) + 20px);">
 
-  <!-- Capital & add ticker -->
-  <div class="proj-header">
-    <div class="proj-capital-row">
-      <div class="proj-capital-box">
-        <div class="proj-cap-label">Capital a invertir</div>
-        <div class="proj-cap-input-wrap">
-          <span class="proj-cap-symbol">$</span>
-          <input id="proj-capital" class="proj-cap-input" type="number" inputmode="decimal" placeholder="1000" value="1000" min="1" onchange="saveProj();renderProj()"/>
+  <!-- Sub-tabs -->
+  <div class="proj-tabs">
+    <button class="proj-tab active" id="ptab-div" onclick="switchProjTab('div')">💰 Dividendos</button>
+    <button class="proj-tab" id="ptab-dca" onclick="switchProjTab('dca')">📅 DCA</button>
+  </div>
+
+  <!-- ══ DIVIDENDOS PANE ══ -->
+  <div id="ppane-div">
+    <!-- Header -->
+    <div class="proj-header">
+      <div class="proj-capital-row">
+        <div class="proj-capital-box">
+          <div class="proj-cap-label">Capital hipotético a invertir</div>
+          <div class="proj-cap-input-wrap">
+            <span class="proj-cap-symbol">$</span>
+            <input id="proj-capital" class="proj-cap-input" type="number" inputmode="decimal" placeholder="1000" value="1000" min="1" onchange="saveProj();renderProj()"/>
+          </div>
+        </div>
+        <button class="proj-refresh-btn" id="proj-refresh-btn" onclick="refreshAllProj()" title="Actualizar todos">↻</button>
+      </div>
+
+      <!-- Import from portfolio -->
+      <button class="proj-import-btn" id="proj-import-btn" onclick="importFromPortfolio()">
+        📊 Importar tickers de mi portafolio
+      </button>
+      <div class="proj-import-info" id="proj-import-info"></div>
+
+      <!-- Add ticker bar -->
+      <div class="proj-add-row" style="margin-top:10px">
+        <input class="fi" id="proj-ticker-input" placeholder="Agrega un ticker  ej: ARCC" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" style="flex:1;height:42px;font-size:14px" onkeydown="if(event.key==='Enter')addProjTicker()"/>
+        <button class="sbtn-sm" onclick="addProjTicker()">+ Agregar</button>
+      </div>
+      <div class="proj-add-status" id="proj-add-status"></div>
+    </div>
+
+    <!-- Summary cards (2 modes: hipotético / real) -->
+    <div id="proj-mode-bar" style="display:none;padding:8px 20px 0">
+      <div class="proj-mode-row">
+        <button class="proj-mode-btn active" id="pmode-hyp" onclick="setProjMode('hyp')">Capital hipotético</button>
+        <button class="proj-mode-btn" id="pmode-real" onclick="setProjMode('real')">Capital real (portafolio)</button>
+      </div>
+    </div>
+
+    <div class="proj-summary" id="proj-summary" style="display:none">
+      <div class="psc"><div class="psl">Ingreso anual</div><div class="psv gain" id="proj-annual">$0</div></div>
+      <div class="psc"><div class="psl">Ingreso mensual</div><div class="psv gain" id="proj-monthly">$0</div></div>
+      <div class="psc"><div class="psl">Yield prom.</div><div class="psv" id="proj-yield">0%</div></div>
+    </div>
+
+    <!-- Tabla de tickers -->
+    <div style="padding:0 20px">
+      <div class="sec-lbl" style="padding:12px 0 8px">Rendimiento esperado</div>
+      <div id="proj-table-wrap">
+        <div class="proj-empty" id="proj-empty">
+          <div style="font-size:36px;margin-bottom:10px">🎯</div>
+          <div style="font-size:15px;font-weight:600;color:var(--text2);margin-bottom:6px">Sin tickers aún</div>
+          <div style="font-size:13px;line-height:1.6">Toca <strong>Importar de mi portafolio</strong> o agrega tickers manualmente para ver proyecciones de dividendos.</div>
+        </div>
+        <div id="proj-table"></div>
+      </div>
+    </div>
+
+    <!-- DRIP -->
+    <div id="proj-drip-section" style="display:none;padding:0 20px 8px">
+      <div class="sec-lbl" style="padding:12px 0 8px">Proyección con reinversión (DRIP)</div>
+      <div class="drip-info">Los dividendos se reinvierten cada año al mismo yield promedio.</div>
+      <div id="proj-drip-table"></div>
+    </div>
+  </div>
+
+  <!-- ══ DCA PANE ══ -->
+  <div id="ppane-dca" style="display:none">
+    <div class="proj-header">
+      <div class="proj-cap-label" style="margin-bottom:12px;font-size:11px;color:var(--text2)">
+        Simula cuánto acumularías aportando una cantidad fija cada mes, con el rendimiento histórico promedio del mercado o el de tus propias acciones.
+      </div>
+
+      <div class="two" style="gap:12px;margin-bottom:12px">
+        <div class="fg" style="margin:0">
+          <label class="fl">Capital inicial ($)</label>
+          <input class="fi" id="dca-initial" type="number" inputmode="decimal" placeholder="0" value="0" min="0" style="height:46px" oninput="renderDCA()"/>
+        </div>
+        <div class="fg" style="margin:0">
+          <label class="fl">Aportación mensual ($)</label>
+          <input class="fi" id="dca-monthly" type="number" inputmode="decimal" placeholder="200" value="200" min="1" style="height:46px" oninput="renderDCA()"/>
         </div>
       </div>
-      <button class="proj-refresh-btn" id="proj-refresh-btn" onclick="refreshAllProj()" title="Actualizar todos">↻</button>
-    </div>
 
-    <!-- Add ticker bar -->
-    <div class="proj-add-row">
-      <input class="fi" id="proj-ticker-input" placeholder="Agrega un ticker  ej: ARCC" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" style="flex:1;height:42px;font-size:14px" onkeydown="if(event.key==='Enter')addProjTicker()"/>
-      <button class="sbtn-sm" onclick="addProjTicker()">+ Agregar</button>
-    </div>
-    <div class="proj-add-status" id="proj-add-status"></div>
-  </div>
-
-  <!-- Summary cards -->
-  <div class="proj-summary" id="proj-summary" style="display:none">
-    <div class="psc"><div class="psl">Ingreso anual</div><div class="psv gain" id="proj-annual">$0</div></div>
-    <div class="psc"><div class="psl">Ingreso mensual</div><div class="psv gain" id="proj-monthly">$0</div></div>
-    <div class="psc"><div class="psl">Yield prom.</div><div class="psv" id="proj-yield">0%</div></div>
-  </div>
-
-  <!-- Tabla de tickers -->
-  <div style="padding:0 20px">
-    <div class="sec-lbl" style="padding:12px 0 8px">Rendimiento esperado</div>
-    <div id="proj-table-wrap">
-      <div class="proj-empty" id="proj-empty">
-        <div style="font-size:36px;margin-bottom:10px">🎯</div>
-        <div style="font-size:15px;font-weight:600;color:var(--text2);margin-bottom:6px">Sin tickers aún</div>
-        <div style="font-size:13px;line-height:1.6">Agrega los tickers que te interesan arriba para ver la proyección de dividendos con tu capital.</div>
+      <div class="two" style="gap:12px;margin-bottom:12px">
+        <div class="fg" style="margin:0">
+          <label class="fl">Plazo (años)</label>
+          <input class="fi" id="dca-years" type="number" inputmode="numeric" placeholder="10" value="10" min="1" max="40" style="height:46px" oninput="renderDCA()"/>
+        </div>
+        <div class="fg" style="margin:0">
+          <label class="fl">Rendimiento anual (%)</label>
+          <input class="fi" id="dca-rate" type="number" inputmode="decimal" placeholder="10" value="10" min="0.1" max="100" step="0.1" style="height:46px" oninput="renderDCA()"/>
+        </div>
       </div>
-      <div id="proj-table"></div>
-    </div>
-  </div>
 
-  <!-- Proyección DRIP -->
-  <div id="proj-drip-section" style="display:none;padding:0 20px 8px">
-    <div class="sec-lbl" style="padding:12px 0 8px">Proyección con reinversión (DRIP)</div>
-    <div class="drip-info">Los dividendos recibidos se reinvierten automáticamente cada año al mismo yield promedio.</div>
-    <div id="proj-drip-table"></div>
+      <!-- Preset buttons -->
+      <div style="margin-bottom:8px">
+        <label class="fl" style="margin-bottom:6px">Presets de rendimiento</label>
+        <div class="dca-presets">
+          <button class="dca-preset" onclick="setDCARate(7)">S&P500 histórico<br/><span>~7%</span></button>
+          <button class="dca-preset" onclick="setDCARate(10)">Mercado US<br/><span>~10%</span></button>
+          <button class="dca-preset active" id="dca-preset-port" onclick="setDCAFromPortfolio()">Mi portafolio<br/><span id="dca-port-rate">—</span></button>
+        </div>
+      </div>
+      <div class="proj-add-status" id="dca-status"></div>
+    </div>
+
+    <!-- DCA Summary -->
+    <div class="proj-summary" id="dca-summary" style="padding:12px 20px 4px">
+      <div class="psc"><div class="psl">Capital final</div><div class="psv" id="dca-final" style="color:var(--accent)">$0</div></div>
+      <div class="psc"><div class="psl">Total aportado</div><div class="psv" id="dca-contributed">$0</div></div>
+      <div class="psc"><div class="psl">Ganancia</div><div class="psv gain" id="dca-profit">$0</div></div>
+    </div>
+
+    <!-- DCA Table -->
+    <div style="padding:0 20px 8px">
+      <div class="sec-lbl" style="padding:12px 0 8px">Evolución año a año</div>
+      <div id="dca-table"></div>
+      <!-- Mini bar chart -->
+      <div style="margin-top:12px">
+        <div class="sec-lbl" style="padding:0 0 8px">Aportado vs Ganancia</div>
+        <div id="dca-chart" style="padding:0 0 8px"></div>
+      </div>
+    </div>
   </div>
 
 </div>
 
-<!-- ═══════════════════════════════
-     DCA SIMULATOR VIEW
-═══════════════════════════════ -->
-<div id="view-dca" style="display:none;flex:1;overflow-y:auto;padding-bottom:calc(var(--nav-h) + var(--sb) + 20px);">
-
-  <!-- Header inputs -->
-  <div class="dca-header">
-    <div class="dca-title-row">
-      <div>
-        <div class="dca-title">Simulador DCA 📅</div>
-        <div class="dca-subtitle">¿Cuánto tendré si invierto cada mes?</div>
-      </div>
-    </div>
-    <div class="dca-inputs-grid">
-      <div class="dca-input-box">
-        <div class="dca-input-label">Aporte mensual</div>
-        <div class="dca-input-wrap">
-          <span class="dca-input-prefix">$</span>
-          <input id="dca-monthly" class="dca-input" type="number" inputmode="decimal" placeholder="500" min="1" value="500"/>
-        </div>
-      </div>
-      <div class="dca-input-box">
-        <div class="dca-input-label">Años de inversión</div>
-        <div class="dca-input-wrap">
-          <input id="dca-years" class="dca-input" type="number" inputmode="numeric" placeholder="10" min="1" max="50" value="10"/>
-          <span class="dca-input-prefix" style="font-size:11px;white-space:nowrap">años</span>
-        </div>
-      </div>
-      <div class="dca-input-box">
-        <div class="dca-input-label">Rendimiento anual esperado</div>
-        <div class="dca-input-wrap">
-          <input id="dca-return" class="dca-input" type="number" inputmode="decimal" placeholder="8" min="0" max="100" value="8"/>
-          <span class="dca-input-prefix">%</span>
-        </div>
-      </div>
-      <div class="dca-input-box full">
-        <div class="dca-input-label">Capital inicial (opcional)</div>
-        <div class="dca-input-wrap">
-          <span class="dca-input-prefix">$</span>
-          <input id="dca-initial" class="dca-input" type="number" inputmode="decimal" placeholder="0" min="0" value="0"/>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Tickers -->
-  <div class="dca-tickers-section">
-    <div class="dca-tickers-header">
-      <span class="dca-tickers-label">Tickers del portafolio</span>
-      <span style="font-size:10px;color:var(--text3);font-family:'DM Mono',monospace" id="dca-alloc-total">0%</span>
-    </div>
-    <div class="dca-add-row">
-      <input class="fi" id="dca-ticker-input" placeholder="Ticker  ej: AAPL  o elige del portafolio"
-        autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false"
-        style="flex:1;height:40px;font-size:13px"
-        onkeydown="if(event.key==='Enter')dcaAddTicker()"/>
-      <button class="sbtn-sm" onclick="dcaAddTicker()">+ Agregar</button>
-    </div>
-    <!-- Chips de tickers del portafolio actual (sugerencias) -->
-    <div id="dca-portfolio-chips" style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px"></div>
-    <!-- Chips DCA activos -->
-    <div class="dca-ticker-chips" id="dca-chips"></div>
-    <div class="dca-alloc-warning" id="dca-alloc-warning">⚠ La asignación total supera el 100%</div>
-    <button class="dca-run-btn" id="dca-run-btn" onclick="dcaRun()">
-      ▶ Simular
-    </button>
-  </div>
-
-  <!-- Results -->
-  <div class="dca-results" id="dca-results" style="display:none">
-    <div class="dca-results-title">
-      <span>Resultado de la simulación</span>
-      <span id="dca-results-label" style="font-size:10px;color:var(--text3);font-family:'DM Mono',monospace"></span>
-    </div>
-
-    <!-- KPIs -->
-    <div class="dca-kpis">
-      <div class="dca-kpi">
-        <div class="dca-kpi-label">Capital final</div>
-        <div class="dca-kpi-val gain" id="dca-kpi-final">—</div>
-      </div>
-      <div class="dca-kpi">
-        <div class="dca-kpi-label">Total invertido</div>
-        <div class="dca-kpi-val" id="dca-kpi-invested">—</div>
-      </div>
-      <div class="dca-kpi">
-        <div class="dca-kpi-label">Ganancia total</div>
-        <div class="dca-kpi-val accent" id="dca-kpi-gain">—</div>
-      </div>
-    </div>
-
-    <!-- Toggle sin/con DRIP -->
-    <div class="dca-toggle-group">
-      <button class="dca-tog-btn active" id="dca-tog-sin" onclick="dcaToggleMode('sin')">Sin reinversión</button>
-      <button class="dca-tog-btn" id="dca-tog-con" onclick="dcaToggleMode('con')">Con dividendos (DRIP)</button>
-    </div>
-
-    <!-- Gráfica SVG -->
-    <div class="dca-chart-wrap">
-      <div class="dca-chart-header">
-        <span class="dca-chart-label">Crecimiento del capital</span>
-        <div class="dca-chart-legend">
-          <span class="dca-legend-item"><span class="dca-legend-dot" style="background:var(--gain)"></span>Con DRIP</span>
-          <span class="dca-legend-item"><span class="dca-legend-dot" style="background:var(--accent)"></span>Sin DRIP</span>
-          <span class="dca-legend-item"><span class="dca-legend-dot" style="background:var(--text3)"></span>Invertido</span>
-        </div>
-      </div>
-      <svg id="dca-chart-svg" width="100%" viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" style="display:block"></svg>
-    </div>
-
-    <!-- Tabla anual -->
-    <div class="dca-year-table">
-      <div class="dca-year-thead">
-        <span class="dca-year-th" style="text-align:left">Año</span>
-        <span class="dca-year-th">Invertido</span>
-        <span class="dca-year-th">Sin DRIP</span>
-        <span class="dca-year-th">Con DRIP</span>
-        <span class="dca-year-th">Ganancia</span>
-      </div>
-      <div id="dca-year-rows"></div>
-    </div>
-
-    <!-- Desglose por ticker -->
-    <div class="dca-breakdown" id="dca-breakdown-wrap" style="display:none">
-      <div class="dca-breakdown-header">Desglose por ticker al final</div>
-      <div id="dca-breakdown-rows"></div>
-    </div>
-
-  </div><!-- /dca-results -->
-
-  <!-- Empty state -->
-  <div class="dca-empty" id="dca-empty" style="display:none">
-    <div class="dca-empty-icon">📅</div>
-    <div class="dca-empty-title">Sin tickers aún</div>
-    <div class="dca-empty-sub">Agrega al menos un ticker o usa los de tu portafolio para simular el DCA.</div>
-  </div>
-
-</div><!-- /view-dca -->
+<!-- INSTALL BANNER (Android / Chrome) -->
 <div id="install-banner">
   <div class="install-row">
     <div class="install-icon">📈</div>
@@ -1341,11 +1248,6 @@ function navTo(tab){
   const summary= document.querySelector('.summary');
   const alloc  = document.querySelector('.alloc-wrap');
   const projV  = document.getElementById('view-proyeccion');
-  const dcaV   = document.getElementById('view-dca');
-
-  // ocultar todo por defecto
-  projV.style.display = 'none';
-  dcaV.style.display  = 'none';
 
   if(tab === 'proyeccion'){
     scroll.style.display = 'none';
@@ -1355,18 +1257,11 @@ function navTo(tab){
     projV.style.flexDirection = 'column';
     currentView = 'proyeccion';
     renderProj();
-  } else if(tab === 'dca'){
-    scroll.style.display  = 'none';
-    summary.style.display = 'none';
-    alloc.style.display   = 'none';
-    dcaV.style.display    = 'flex';
-    dcaV.style.flexDirection = 'column';
-    currentView = 'dca';
-    dcaInit();
   } else {
     scroll.style.display = '';
     summary.style.display= '';
     alloc.style.display  = '';
+    projV.style.display  = 'none';
     currentView = tab;
     if(tab === 'settings') openSettings();
   }
@@ -1376,8 +1271,8 @@ function openAdd(){ haptic('light'); document.getElementById('ov').classList.add
 function openSettings(){ document.getElementById('ov').classList.add('open'); document.getElementById('set-sheet').classList.add('open'); if(apiKey) document.getElementById('iak').value=apiKey; renderSyncPane(); initToggles(); if(isStandalone){document.getElementById('already-installed').style.display='block';} }
 function closeAll(){
   ['ov','add-sheet','set-sheet'].forEach(id=>document.getElementById(id).classList.remove('open'));
-  // Sólo resetear nav si NO estamos en proyeccion o dca
-  if(currentView !== 'proyeccion' && currentView !== 'dca'){
+  // Sólo resetear nav si NO estamos en proyeccion
+  if(currentView !== 'proyeccion'){
     document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
     document.getElementById('nav-portfolio').classList.add('active');
   }
@@ -1386,170 +1281,216 @@ function switchTab(tab){ const tabs=document.querySelectorAll('.set-tab'); tabs.
 function saveKey(){ const v=document.getElementById('iak').value.trim(),el=document.getElementById('ast'); if(!v){el.textContent='Ingresa una key válida.';el.className='ast err';return;} apiKey=v;localStorage.setItem('av_key',v); el.textContent='✓ Key guardada. Toca ↻ para actualizar.';el.className='ast ok'; setTimeout(closeAll,1400); }
 
 // ═══════════════════════════════════════════
-//  PROYECCIÓN DE DIVIDENDOS
-//  Modelo: projTickers = [{ticker, price, divPerShare, divYield, loading, error}]
-//  Capital: projCapital (número)
+//  PROYECCIÓN — estado
 // ═══════════════════════════════════════════
-let projTickers = [];
-let projCapital = 1000;
+let projTickers  = [];
+let projCapital  = 1000;
+let projMode     = 'hyp';   // 'hyp' | 'real'
+let projTab      = 'div';   // 'div' | 'dca'
 
 function loadProj(){
   const raw = localStorage.getItem('proj_v1');
-  if(raw){ try{ const d=JSON.parse(raw); projTickers=d.tickers||[]; projCapital=d.capital||1000; }catch(e){} }
-  // Limpiar campos volátiles
+  if(raw){ try{ const d=JSON.parse(raw); projTickers=d.tickers||[]; projCapital=d.capital||1000; projMode=d.mode||'hyp'; }catch(e){} }
   projTickers.forEach(t=>{ t.loading=false; t.error=''; });
-  // Sync capital input
-  const inp = document.getElementById('proj-capital');
-  if(inp) inp.value = projCapital;
+  const inp=document.getElementById('proj-capital');
+  if(inp) inp.value=projCapital;
 }
 
 function saveProj(){
-  const cap = parseFloat(document.getElementById('proj-capital')?.value) || projCapital;
-  projCapital = cap;
-  localStorage.setItem('proj_v1', JSON.stringify({
-    tickers: projTickers.map(t=>({ticker:t.ticker, price:t.price, divPerShare:t.divPerShare, divYield:t.divYield})),
-    capital: projCapital
+  const cap=parseFloat(document.getElementById('proj-capital')?.value)||projCapital;
+  projCapital=cap;
+  localStorage.setItem('proj_v1',JSON.stringify({
+    tickers:projTickers.map(t=>({ticker:t.ticker,price:t.price,divPerShare:t.divPerShare,divYield:t.divYield})),
+    capital:projCapital, mode:projMode
   }));
 }
 
-// Fetch datos de dividendos vía OVERVIEW de Alpha Vantage
-// Devuelve { price, divPerShare, divYield }
-async function fetchOverview(ticker){
-  if(!apiKey) throw new Error('no_key');
-  // Hacemos GLOBAL_QUOTE (precio) y OVERVIEW (dividendo) en paralelo
-  const [rQ, rO] = await Promise.all([
-    fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${encodeURIComponent(ticker)}&apikey=${apiKey}`),
-    fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${encodeURIComponent(ticker)}&apikey=${apiKey}`)
-  ]);
-  const [dQ, dO] = await Promise.all([rQ.json(), rO.json()]);
-
-  if(dQ['Note']||dQ['Information']||dO['Note']||dO['Information']) throw new Error('rate_limit');
-
-  const q = dQ['Global Quote'];
-  if(!q||!q['05. price']) throw new Error('not_found');
-
-  const price      = parseFloat(q['05. price']);
-  // Alpha Vantage puede devolver DividendPerShare como "0" o un número
-  const divPerShare= parseFloat(dO['DividendPerShare']||'0') || 0;
-  // DividendYield viene como "0.0666" (= 6.66%)
-  const divYield   = parseFloat(dO['DividendYield']||'0') * 100 || (price > 0 && divPerShare > 0 ? (divPerShare/price*100) : 0);
-
-  return { price, divPerShare, divYield };
+function switchProjTab(tab){
+  projTab=tab;
+  document.getElementById('ptab-div').classList.toggle('active',tab==='div');
+  document.getElementById('ptab-dca').classList.toggle('active',tab==='dca');
+  document.getElementById('ppane-div').style.display = tab==='div'?'block':'none';
+  document.getElementById('ppane-dca').style.display = tab==='dca'?'block':'none';
+  if(tab==='dca') renderDCA();
 }
 
-async function addProjTicker(){
-  const input  = document.getElementById('proj-ticker-input');
-  const ticker = input.value.trim().toUpperCase();
-  const status = document.getElementById('proj-add-status');
-  if(!ticker){ status.textContent='Ingresa un símbolo.'; status.className='proj-add-status err'; return; }
-  if(projTickers.find(t=>t.ticker===ticker)){ status.textContent=`${ticker} ya está en la lista.`; status.className='proj-add-status err'; return; }
-  if(!apiKey){ 
-    // Sin API key: agregar con datos vacíos para completar manualmente
-    projTickers.push({ticker, price:null, divPerShare:null, divYield:null, loading:false, error:'Sin API Key'});
-    saveProj(); renderProj(); input.value='';
-    status.textContent=`${ticker} agregado (configura API Key para datos automáticos).`; status.className='proj-add-status info';
-    return;
-  }
-
-  // Con API key: buscar datos
-  status.textContent=`Buscando ${ticker}...`; status.className='proj-add-status info';
-  const entry = {ticker, price:null, divPerShare:null, divYield:null, loading:true, error:''};
-  projTickers.push(entry);
-  renderProj();
-
-  try{
-    // Rate limit: esperar 1.4s si ya hay otros tickers
-    if(projTickers.filter(t=>!t.loading).length > 0) await new Promise(r=>setTimeout(r,1400));
-    const data = await fetchOverview(ticker);
-    entry.price       = data.price;
-    entry.divPerShare = data.divPerShare;
-    entry.divYield    = data.divYield;
-    entry.loading     = false;
-    entry.error       = '';
-    status.textContent=`${ticker} agregado ✓`; status.className='proj-add-status ok';
-  }catch(e){
-    entry.loading = false;
-    entry.error   = e.message === 'not_found' ? 'No encontrado' : e.message === 'rate_limit' ? 'Límite API' : 'Error';
-    entry.price   = null;
-    if(e.message==='rate_limit') status.textContent='Límite de API. Espera 1 min.'; 
-    else if(e.message==='not_found') status.textContent=`${ticker}: ticker no encontrado.`;
-    else status.textContent=`Error al buscar ${ticker}.`;
-    status.className='proj-add-status err';
-  }
-
-  saveProj(); renderProj(); input.value='';
-}
-
-async function refreshAllProj(){
-  if(!apiKey){ toast('Configura la API Key en Ajustes ⚙'); return; }
-  if(!projTickers.length) return;
-  const btn = document.getElementById('proj-refresh-btn');
-  btn.textContent='⏳'; btn.disabled=true;
-  projTickers.forEach(t=>{ t.loading=true; t.error=''; });
-  renderProj(); toast('Actualizando proyección...', 5000);
-
-  for(const entry of projTickers){
-    try{
-      const data = await fetchOverview(entry.ticker);
-      entry.price       = data.price;
-      entry.divPerShare = data.divPerShare;
-      entry.divYield    = data.divYield;
-      entry.loading     = false; entry.error='';
-    }catch(e){
-      entry.loading=false;
-      entry.error = e.message==='rate_limit'?'Límite API': e.message==='not_found'?'No encontrado':'Error';
-      if(e.message==='rate_limit'){ projTickers.filter(t=>t.loading).forEach(t=>{t.loading=false;t.error='Límite API';}); break; }
-    }
-    saveProj(); renderProj();
-    await new Promise(r=>setTimeout(r,1500)); // 2 calls por ticker (QUOTE + OVERVIEW)
-  }
-  btn.textContent='↻'; btn.disabled=false; toast('Proyección actualizada ✓');
-}
-
-function removeProjTicker(ticker){
-  projTickers = projTickers.filter(t=>t.ticker!==ticker);
+function setProjMode(mode){
+  projMode=mode;
+  document.getElementById('pmode-hyp').classList.toggle('active',mode==='hyp');
+  document.getElementById('pmode-real').classList.toggle('active',mode==='real');
   saveProj(); renderProj();
 }
 
-// Calcula ingreso de dividendo para un ticker con el capital actual
-function projIncome(entry){
-  if(!entry.price || !entry.divPerShare) return null;
-  const cap    = parseFloat(document.getElementById('proj-capital')?.value) || projCapital;
-  const shares = cap / entry.price;
-  return shares * entry.divPerShare;
+// ── Import from portfolio ──────────────────
+// Trae los tickers del portafolio y además,
+// en modo 'real', calcula capital = inversión real por ticker.
+async function importFromPortfolio(){
+  const groups = getGroups();
+  const tickers = Object.keys(groups);
+  if(!tickers.length){ toast('Agrega acciones a tu portafolio primero'); return; }
+
+  const info = document.getElementById('proj-import-info');
+  info.textContent = 'Importando...';
+
+  let added=0, skipped=0;
+  for(const ticker of tickers){
+    if(projTickers.find(t=>t.ticker===ticker)){ skipped++; continue; }
+    // Capital real = total invertido en ese ticker
+    const st = groupStats(groups[ticker]);
+    const entry = {ticker, price:null, divPerShare:null, divYield:null, loading:!!apiKey, error:'', realCapital: st.investido};
+    projTickers.push(entry);
+    added++;
+  }
+  // Actualizar realCapital en entradas ya existentes también
+  projTickers.forEach(e=>{
+    if(groups[e.ticker]){ e.realCapital = groupStats(groups[e.ticker]).investido; }
+  });
+
+  // Mostrar barra de modo si hay tickers reales
+  document.getElementById('proj-mode-bar').style.display = projTickers.length ? 'block' : 'none';
+
+  saveProj(); renderProj();
+  info.textContent = `${added} ticker${added!==1?'s':''} importado${added!==1?'s':''}${skipped?` · ${skipped} ya existía${skipped!==1?'n':''}`:''}. Capital real calculado desde tu portafolio.`;
+
+  if(!apiKey){ info.textContent += ' (configura API Key para precios automáticos)'; return; }
+
+  // Fetch datos sólo de los nuevos (loading=true)
+  const toFetch = projTickers.filter(t=>t.loading);
+  for(const entry of toFetch){
+    try{
+      await new Promise(r=>setTimeout(r,1500));
+      const data=await fetchOverview(entry.ticker);
+      entry.price=data.price; entry.divPerShare=data.divPerShare; entry.divYield=data.divYield;
+      entry.loading=false; entry.error='';
+    }catch(e){
+      entry.loading=false;
+      entry.error=e.message==='rate_limit'?'Límite API':e.message==='not_found'?'No encontrado':'Error';
+      if(e.message==='rate_limit'){ projTickers.filter(t=>t.loading).forEach(t=>{t.loading=false;t.error='Límite API';}); break; }
+    }
+    saveProj(); renderProj();
+  }
+  info.textContent = `Importado desde portafolio ✓ — ${tickers.length} tickers con capital real.`;
 }
 
-// Yield badge CSS class
+// ── Capital para un ticker según modo ─────
+function capitalForTicker(entry){
+  if(projMode==='real' && entry.realCapital) return entry.realCapital;
+  return parseFloat(document.getElementById('proj-capital')?.value)||projCapital;
+}
+
+// ── Fetch OVERVIEW ─────────────────────────
+async function fetchOverview(ticker){
+  if(!apiKey) throw new Error('no_key');
+  const [rQ,rO]=await Promise.all([
+    fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${encodeURIComponent(ticker)}&apikey=${apiKey}`),
+    fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${encodeURIComponent(ticker)}&apikey=${apiKey}`)
+  ]);
+  const [dQ,dO]=await Promise.all([rQ.json(),rO.json()]);
+  if(dQ['Note']||dQ['Information']||dO['Note']||dO['Information']) throw new Error('rate_limit');
+  const q=dQ['Global Quote']; if(!q||!q['05. price']) throw new Error('not_found');
+  const price=parseFloat(q['05. price']);
+  const divPerShare=parseFloat(dO['DividendPerShare']||'0')||0;
+  const divYield=parseFloat(dO['DividendYield']||'0')*100||(price>0&&divPerShare>0?(divPerShare/price*100):0);
+  return{price,divPerShare,divYield};
+}
+
+async function addProjTicker(){
+  const input=document.getElementById('proj-ticker-input');
+  const ticker=input.value.trim().toUpperCase();
+  const status=document.getElementById('proj-add-status');
+  if(!ticker){status.textContent='Ingresa un símbolo.';status.className='proj-add-status err';return;}
+  if(projTickers.find(t=>t.ticker===ticker)){status.textContent=`${ticker} ya está en la lista.`;status.className='proj-add-status err';return;}
+  if(!apiKey){
+    projTickers.push({ticker,price:null,divPerShare:null,divYield:null,loading:false,error:'Sin API Key',realCapital:null});
+    saveProj();renderProj();input.value='';
+    status.textContent=`${ticker} agregado (configura API Key).`;status.className='proj-add-status info';return;
+  }
+  status.textContent=`Buscando ${ticker}...`;status.className='proj-add-status info';
+  const entry={ticker,price:null,divPerShare:null,divYield:null,loading:true,error:'',realCapital:null};
+  projTickers.push(entry); renderProj();
+  try{
+    if(projTickers.filter(t=>!t.loading).length>0) await new Promise(r=>setTimeout(r,1500));
+    const data=await fetchOverview(ticker);
+    entry.price=data.price;entry.divPerShare=data.divPerShare;entry.divYield=data.divYield;
+    entry.loading=false;entry.error='';
+    status.textContent=`${ticker} agregado ✓`;status.className='proj-add-status ok';
+  }catch(e){
+    entry.loading=false;
+    entry.error=e.message==='not_found'?'No encontrado':e.message==='rate_limit'?'Límite API':'Error';
+    if(e.message==='rate_limit') status.textContent='Límite de API. Espera 1 min.';
+    else if(e.message==='not_found') status.textContent=`${ticker}: no encontrado.`;
+    else status.textContent=`Error al buscar ${ticker}.`;
+    status.className='proj-add-status err';
+  }
+  saveProj();renderProj();input.value='';
+}
+
+async function refreshAllProj(){
+  if(!apiKey){toast('Configura la API Key en Ajustes ⚙');return;}
+  if(!projTickers.length) return;
+  const btn=document.getElementById('proj-refresh-btn');
+  btn.textContent='⏳';btn.disabled=true;
+  projTickers.forEach(t=>{t.loading=true;t.error='';});
+  renderProj();toast('Actualizando proyección...', 5000);
+  for(const entry of projTickers){
+    try{
+      const data=await fetchOverview(entry.ticker);
+      entry.price=data.price;entry.divPerShare=data.divPerShare;entry.divYield=data.divYield;
+      entry.loading=false;entry.error='';
+    }catch(e){
+      entry.loading=false;
+      entry.error=e.message==='rate_limit'?'Límite API':e.message==='not_found'?'No encontrado':'Error';
+      if(e.message==='rate_limit'){projTickers.filter(t=>t.loading).forEach(t=>{t.loading=false;t.error='Límite API';});break;}
+    }
+    saveProj();renderProj();
+    await new Promise(r=>setTimeout(r,1500));
+  }
+  btn.textContent='↻';btn.disabled=false;toast('Proyección actualizada ✓');
+}
+
+function removeProjTicker(ticker){
+  projTickers=projTickers.filter(t=>t.ticker!==ticker);
+  saveProj();renderProj();
+}
+
+function projIncome(entry){
+  if(!entry.price||!entry.divPerShare) return null;
+  const cap=capitalForTicker(entry);
+  return (cap/entry.price)*entry.divPerShare;
+}
+
 function yieldClass(y){
-  if(y === null) return 'low';
-  if(y >= 5) return '';        // gain (verde)
-  if(y >= 3) return 'mid';    // naranja
-  return 'low';               // gris
+  if(y===null) return 'low';
+  if(y>=5) return '';
+  if(y>=3) return 'mid';
+  return 'low';
 }
 
 function renderProj(){
-  const cap = parseFloat(document.getElementById('proj-capital')?.value) || projCapital;
+  // Sync mode bar visibility
+  const hasRealCap = projTickers.some(t=>t.realCapital);
+  document.getElementById('proj-mode-bar').style.display = hasRealCap?'block':'none';
 
-  const tableWrap = document.getElementById('proj-table');
-  const emptyEl   = document.getElementById('proj-empty');
-  const summaryEl = document.getElementById('proj-summary');
-  const dripSec   = document.getElementById('proj-drip-section');
+  const tableWrap=document.getElementById('proj-table');
+  const emptyEl=document.getElementById('proj-empty');
+  const summaryEl=document.getElementById('proj-summary');
+  const dripSec=document.getElementById('proj-drip-section');
 
   if(!projTickers.length){
-    tableWrap.innerHTML=''; emptyEl.style.display='block';
-    summaryEl.style.display='none'; dripSec.style.display='none';
+    tableWrap.innerHTML='';emptyEl.style.display='block';
+    summaryEl.style.display='none';dripSec.style.display='none';
     return;
   }
   emptyEl.style.display='none';
 
-  // Ordenar por yield desc
-  const sorted = [...projTickers].sort((a,b)=>(b.divYield||0)-(a.divYield||0));
+  const sorted=[...projTickers].sort((a,b)=>(b.divYield||0)-(a.divYield||0));
+  const showRealCap = projMode==='real';
 
-  // Tabla
-  tableWrap.innerHTML = `
+  tableWrap.innerHTML=`
     <div class="proj-table">
-      <div class="proj-thead">
+      <div class="proj-thead" style="grid-template-columns:56px ${showRealCap?'70px ':''} 1fr 72px 72px 50px 32px">
         <span class="proj-th" style="text-align:left">Ticker</span>
+        ${showRealCap?'<span class="proj-th">Capital</span>':''}
         <span class="proj-th">Precio</span>
         <span class="proj-th">Div/acc</span>
         <span class="proj-th">Ingreso</span>
@@ -1557,374 +1498,153 @@ function renderProj(){
         <span class="proj-th"></span>
       </div>
       ${sorted.map(entry=>{
-        const income = projIncome(entry);
-        const shares = entry.price ? (cap/entry.price) : null;
-        const yClass = yieldClass(entry.divYield);
-        return`<div class="proj-row">
+        const income=projIncome(entry);
+        const cap=capitalForTicker(entry);
+        const yc=yieldClass(entry.divYield);
+        return`<div class="proj-row" style="grid-template-columns:56px ${showRealCap?'70px ':''} 1fr 72px 72px 50px 32px">
           <span class="proj-ticker">${entry.ticker}</span>
+          ${showRealCap?`<span class="proj-cell" style="color:var(--text)">${fmt(cap,0)}</span>`:''}
           <span class="proj-cell">${entry.loading?'<span class="dot"></span>':entry.price!=null?fmt(entry.price):entry.error?`<span style="color:var(--loss);font-size:10px">${entry.error}</span>`:'—'}</span>
           <span class="proj-cell">${entry.loading?'…':entry.divPerShare!=null?(entry.divPerShare>0?fmt(entry.divPerShare,2):'<span class="proj-no-div">Sin div.</span>'):'-'}</span>
           <span class="proj-cell" style="color:var(--gain)">${entry.loading?'…':income!=null?fmt(income,2):'—'}</span>
-          <span class="proj-cell"><span class="proj-yield-badge ${yClass}">${entry.loading?'…':entry.divYield!=null&&entry.divYield>0?entry.divYield.toFixed(2)+'%':'—'}</span></span>
+          <span class="proj-cell"><span class="proj-yield-badge ${yc}">${entry.loading?'…':entry.divYield!=null&&entry.divYield>0?entry.divYield.toFixed(2)+'%':'—'}</span></span>
           <span class="proj-cell"><button class="proj-del" onclick="removeProjTicker('${entry.ticker}')">×</button></span>
         </div>`;
       }).join('')}
     </div>`;
 
-  // Summary totals
-  const validEntries = projTickers.filter(t=>t.price && t.divPerShare != null && !t.loading);
-  const totalAnnual  = validEntries.reduce((s,t)=>s+(projIncome(t)||0),0);
-  const totalMonthly = totalAnnual / 12;
-  const avgYield     = validEntries.length ? validEntries.reduce((s,t)=>s+(t.divYield||0),0)/validEntries.length : 0;
+  const valid=projTickers.filter(t=>t.price&&t.divPerShare!=null&&!t.loading);
+  const totalAnnual=valid.reduce((s,t)=>s+(projIncome(t)||0),0);
+  const totalMonthly=totalAnnual/12;
+  const avgYield=valid.length?valid.reduce((s,t)=>s+(t.divYield||0),0)/valid.length:0;
 
-  if(validEntries.length){
+  if(valid.length){
     summaryEl.style.display='grid';
-    document.getElementById('proj-annual').textContent  = fmt(totalAnnual,2);
-    document.getElementById('proj-monthly').textContent = fmt(totalMonthly,2);
-    document.getElementById('proj-yield').textContent   = avgYield.toFixed(2)+'%';
-    renderDRIP(cap, totalAnnual, avgYield);
+    document.getElementById('proj-annual').textContent=fmt(totalAnnual,2);
+    document.getElementById('proj-monthly').textContent=fmt(totalMonthly,2);
+    document.getElementById('proj-yield').textContent=avgYield.toFixed(2)+'%';
+    // DRIP usa el capital total en modo real, hipotético en modo hyp
+    const totalCap = showRealCap
+      ? valid.reduce((s,t)=>s+(t.realCapital||capitalForTicker(t)),0)
+      : parseFloat(document.getElementById('proj-capital')?.value)||projCapital;
+    renderDRIP(totalCap, totalAnnual, avgYield);
     dripSec.style.display='block';
   } else {
-    summaryEl.style.display='none'; dripSec.style.display='none';
+    summaryEl.style.display='none';dripSec.style.display='none';
   }
 }
 
-// Proyección DRIP compuesta
-// Año N: capital_acumulado × yield_prom (reinvirtiendo dividendos)
 function renderDRIP(capital, annualIncome, avgYield){
   if(!avgYield) return;
-  const y = avgYield / 100;
-  const rows = [1,2,3,5,10].map(yr=>{
-    // Fórmula: Capital_n = capital × (1+y)^n    Ingreso_n = Capital_n × y
-    const cap_n    = capital * Math.pow(1+y, yr);
-    const income_n = cap_n * y;
-    const total_n  = cap_n - capital; // ganancia acumulada
-    return{yr, cap_n, income_n, total_n};
+  const y=avgYield/100;
+  const rows=[1,2,3,5,10].map(yr=>{
+    const cap_n=capital*Math.pow(1+y,yr);
+    return{yr,cap_n,income_n:cap_n*y,total_n:cap_n-capital};
   });
-
   document.getElementById('proj-drip-table').innerHTML=`
     <div class="drip-table">
-      <div class="drip-thead">
-        <span class="drip-th" style="text-align:left">Año</span>
-        <span class="drip-th">Capital</span>
-        <span class="drip-th">Ingreso/año</span>
-        <span class="drip-th">Ingreso/mes</span>
-        <span class="drip-th">Ganancia</span>
-      </div>
-      ${rows.map(r=>`<div class="drip-row${r.yr===1?' ':''}">
-        <span class="drip-cell">Año ${r.yr}</span>
-        <span class="drip-cell">${fmt(r.cap_n,0)}</span>
-        <span class="drip-cell gain">${fmt(r.income_n,2)}</span>
-        <span class="drip-cell gain">${fmt(r.income_n/12,2)}</span>
-        <span class="drip-cell" style="color:var(--accent)">${fmt(r.total_n,0)}</span>
-      </div>`).join('')}
+      <div class="drip-thead"><span class="drip-th" style="text-align:left">Año</span><span class="drip-th">Capital</span><span class="drip-th">Ingreso/año</span><span class="drip-th">Ingreso/mes</span><span class="drip-th">Ganancia</span></div>
+      ${rows.map(r=>`<div class="drip-row"><span class="drip-cell">Año ${r.yr}</span><span class="drip-cell">${fmt(r.cap_n,0)}</span><span class="drip-cell gain">${fmt(r.income_n,2)}</span><span class="drip-cell gain">${fmt(r.income_n/12,2)}</span><span class="drip-cell" style="color:var(--accent)">${fmt(r.total_n,0)}</span></div>`).join('')}
     </div>`;
 }
 
 // ═══════════════════════════════════════════
 //  SIMULADOR DCA
 // ═══════════════════════════════════════════
-let dcaTickers = [];   // [{ticker, alloc, color}]
-let dcaMode    = 'sin'; // 'sin' | 'con'
-let dcaLastResult = null;
-
-const DCA_STORAGE_KEY = 'dca_v1';
-
-function dcaLoad(){
-  try{
-    const raw = localStorage.getItem(DCA_STORAGE_KEY);
-    if(raw){ const d=JSON.parse(raw); dcaTickers=d.tickers||[]; }
-  }catch(e){}
-}
-function dcaSave(){
-  localStorage.setItem(DCA_STORAGE_KEY, JSON.stringify({tickers:dcaTickers}));
+function setDCARate(rate){
+  document.getElementById('dca-rate').value=rate;
+  document.querySelectorAll('.dca-preset').forEach(b=>b.classList.remove('active'));
+  renderDCA();
 }
 
-function dcaInit(){
-  dcaLoad();
-  dcaRenderPortfolioChips();
-  dcaRenderChips();
-  dcaUpdateAllocTotal();
-}
-
-// Chips de sugerencias del portafolio actual
-function dcaRenderPortfolioChips(){
-  const wrap = document.getElementById('dca-portfolio-chips');
-  if(!wrap) return;
-  const groups = getGroups();
-  const tickers = Object.keys(groups).filter(t => !dcaTickers.find(d=>d.ticker===t));
-  if(!tickers.length){ wrap.innerHTML='<span style="font-size:10px;color:var(--text3);font-family:\'DM Mono\',monospace">No hay tickers en el portafolio aún</span>'; return; }
-  wrap.innerHTML = tickers.map(t =>
-    `<button onclick="dcaAddFromPortfolio('${t}')" style="background:var(--surface);border:1px solid var(--border2);border-radius:20px;padding:4px 11px;font-size:11px;font-weight:700;font-family:'DM Mono',monospace;color:var(--text2);cursor:pointer">+ ${t}</button>`
-  ).join('');
-}
-
-function dcaAddFromPortfolio(ticker){
-  if(dcaTickers.find(d=>d.ticker===ticker)) return;
-  const n = dcaTickers.length;
-  dcaTickers.push({ ticker, alloc: Math.floor(100/(n+1)), color: COLORS[n % COLORS.length] });
-  // Re-balancear allocations uniformemente
-  const share = Math.floor(100/dcaTickers.length);
-  dcaTickers.forEach((d,i)=>d.alloc = i===dcaTickers.length-1 ? 100-share*(dcaTickers.length-1) : share);
-  dcaSave(); dcaRenderChips(); dcaRenderPortfolioChips(); dcaUpdateAllocTotal(); haptic('light');
-  if(dcaLastResult) dcaRun();
-}
-
-function dcaAddTicker(){
-  const inp = document.getElementById('dca-ticker-input');
-  const t   = inp.value.trim().toUpperCase();
-  if(!t){ toast('Ingresa un ticker'); return; }
-  if(dcaTickers.find(d=>d.ticker===t)){ toast('Ya está en la lista'); inp.value=''; return; }
-  const n = dcaTickers.length;
-  dcaTickers.push({ ticker:t, alloc: Math.floor(100/(n+1)), color: COLORS[n % COLORS.length] });
-  const share = Math.floor(100/dcaTickers.length);
-  dcaTickers.forEach((d,i)=>d.alloc = i===dcaTickers.length-1 ? 100-share*(dcaTickers.length-1) : share);
-  inp.value='';
-  dcaSave(); dcaRenderChips(); dcaRenderPortfolioChips(); dcaUpdateAllocTotal(); haptic('light');
-  if(dcaLastResult) dcaRun();
-}
-
-function dcaRemoveTicker(ticker){
-  dcaTickers = dcaTickers.filter(d=>d.ticker!==ticker);
-  if(dcaTickers.length){
-    const share = Math.floor(100/dcaTickers.length);
-    dcaTickers.forEach((d,i)=>d.alloc = i===dcaTickers.length-1 ? 100-share*(dcaTickers.length-1) : share);
+function setDCAFromPortfolio(){
+  // Calcula rendimiento promedio ponderado del portafolio actual
+  const groups=getGroups();
+  const tickers=Object.keys(groups);
+  if(!tickers.length){toast('No hay acciones en el portafolio');return;}
+  let totalInv=0, weightedGain=0, valid=0;
+  tickers.forEach(t=>{
+    const st=groupStats(groups[t]);
+    if(st.pctVal!=null){ weightedGain+=st.pctVal*st.investido; totalInv+=st.investido; valid++; }
+  });
+  if(!valid||!totalInv){
+    const el=document.getElementById('dca-status');
+    el.textContent='Actualiza los precios primero para calcular el rendimiento del portafolio.';
+    el.className='proj-add-status info'; return;
   }
-  dcaSave(); dcaRenderChips(); dcaRenderPortfolioChips(); dcaUpdateAllocTotal(); haptic('light');
-  if(dcaLastResult) dcaRun();
+  const avgPct=weightedGain/totalInv;
+  document.getElementById('dca-rate').value=Math.max(0.1,avgPct).toFixed(2);
+  document.getElementById('dca-port-rate').textContent=avgPct.toFixed(1)+'%';
+  document.querySelectorAll('.dca-preset').forEach(b=>b.classList.remove('active'));
+  document.getElementById('dca-preset-port').classList.add('active');
+  document.getElementById('dca-status').textContent=`Rendimiento actual del portafolio: ${avgPct.toFixed(2)}%`;
+  document.getElementById('dca-status').className='proj-add-status ok';
+  renderDCA();
 }
 
-function dcaUpdateAlloc(ticker, val){
-  const d = dcaTickers.find(x=>x.ticker===ticker);
-  if(d) d.alloc = Math.max(1, Math.min(100, parseInt(val)||0));
-  dcaSave(); dcaUpdateAllocTotal();
-}
+function renderDCA(){
+  const initial    = parseFloat(document.getElementById('dca-initial')?.value)||0;
+  const monthly    = parseFloat(document.getElementById('dca-monthly')?.value)||0;
+  const years      = Math.min(40,Math.max(1,parseInt(document.getElementById('dca-years')?.value)||10));
+  const annualRate = parseFloat(document.getElementById('dca-rate')?.value)||10;
+  if(monthly<=0&&initial<=0) return;
 
-function dcaUpdateAllocTotal(){
-  const total = dcaTickers.reduce((s,d)=>s+d.alloc,0);
-  const el    = document.getElementById('dca-alloc-total');
-  const warn  = document.getElementById('dca-alloc-warning');
-  if(el) el.textContent = total+'%';
-  if(warn) warn.style.display = total>100?'block':'none';
-  if(el) el.style.color = total===100?'var(--gain)':total>100?'var(--loss)':'var(--text3)';
-}
+  const r = annualRate/100/12; // tasa mensual
+  const rows=[];
 
-function dcaRenderChips(){
-  const wrap = document.getElementById('dca-chips');
-  if(!wrap) return;
-  if(!dcaTickers.length){ wrap.innerHTML=''; return; }
-  wrap.innerHTML = dcaTickers.map(d=>`
-    <div class="dca-chip active">
-      <span class="dca-chip-ticker" style="color:${d.color}">${d.ticker}</span>
-      <input type="number" min="1" max="100"
-        value="${d.alloc}"
-        oninput="dcaUpdateAlloc('${d.ticker}', this.value)"
-        style="width:36px;background:none;border:none;outline:none;color:var(--text2);font-size:11px;font-family:'DM Mono',monospace;text-align:center;padding:0"/>
-      <span class="dca-chip-pct">%</span>
-      <button class="dca-chip-del" onclick="dcaRemoveTicker('${d.ticker}')">×</button>
-    </div>`).join('');
-}
-
-// ── Cálculo principal DCA ──────────────────────────────────────────
-// Modelo: aportes mensuales durante N años con tasa anual r
-// Valor futuro: FV = P × ((1+r_m)^n - 1) / r_m  + C0 × (1+r_m)^n
-// Versión con DRIP: se suma yield de dividendos al rendimiento mensual
-function dcaCalc(monthly, years, annualReturn, initial, divYield=0){
-  const r_annual = annualReturn/100;
-  const r_div    = divYield/100;
-  const r_total  = r_annual + r_div;
-  const r_m      = r_total/12;
-  const n        = years * 12;
-  const rows     = [];
-
-  let capital    = initial;
-  let invested   = initial;
-
-  for(let yr=1; yr<=years; yr++){
-    for(let mo=0; mo<12; mo++){
-      capital  = capital * (1+r_m) + monthly;
-      invested += monthly;
+  // Calcula mes a mes pero sólo guarda snapshot anual
+  let balance=initial;
+  for(let yr=1;yr<=years;yr++){
+    for(let m=0;m<12;m++){
+      balance = balance*(1+r) + monthly;
     }
-    rows.push({ yr, invested: invested, value: capital, gain: capital-invested });
-  }
-  return { rows, final: capital, invested, gain: capital-invested };
-}
-
-function dcaRun(){
-  const monthly = parseFloat(document.getElementById('dca-monthly').value)||0;
-  const years   = parseInt(document.getElementById('dca-years').value)||10;
-  const ret     = parseFloat(document.getElementById('dca-return').value)||0;
-  const initial = parseFloat(document.getElementById('dca-initial').value)||0;
-  const divYield= parseFloat(document.getElementById('dca-div-yield').value)||0;
-
-  if(monthly<=0 && initial<=0){ toast('Ingresa un aporte mensual o capital inicial'); return; }
-  if(years<1){ toast('Mínimo 1 año'); return; }
-
-  // Si hay tickers en proyección que coincidan, su yield sobreescribe el manual (más preciso)
-  let avgDiv = divYield; // default: campo manual
-  if(dcaTickers.length && projTickers.length){
-    let totalAlloc=0, sumYield=0;
-    dcaTickers.forEach(d=>{
-      const pt = projTickers.find(p=>p.ticker===d.ticker);
-      if(pt?.divYield){ sumYield += pt.divYield * (d.alloc/100); totalAlloc += d.alloc; }
-    });
-    // Solo sobreescribir si al menos 1 ticker tiene datos reales de dividendos
-    if(totalAlloc>0) avgDiv = sumYield;
+    const contributed = initial + monthly*12*yr;
+    const profit      = balance - contributed;
+    rows.push({yr, balance, contributed, profit});
   }
 
-  const sinDRIP = dcaCalc(monthly, years, ret, initial, 0);
-  const conDRIP = dcaCalc(monthly, years, ret, initial, avgDiv);
+  const final    = rows[rows.length-1];
+  const totalCont= initial + monthly*12*years;
+  const totalProfit= final.balance - totalCont;
 
-  dcaLastResult = { sinDRIP, conDRIP, monthly, years, ret, initial, avgDiv };
+  // Summary
+  document.getElementById('dca-final').textContent       = fmt(final.balance,0);
+  document.getElementById('dca-contributed').textContent  = fmt(totalCont,0);
+  document.getElementById('dca-profit').textContent       = fmt(totalProfit,0);
 
-  dcaRenderResults();
-  haptic('success');
-}
+  // Mostrar sólo hitos relevantes para no saturar en plazos largos
+  const showRows = years<=10 ? rows : rows.filter(r=>r.yr%Math.ceil(years/10)===0||r.yr===years);
 
-function dcaRenderResults(){
-  if(!dcaLastResult) return;
-  const { sinDRIP, conDRIP, monthly, years, ret, avgDiv } = dcaLastResult;
-
-  // KPIs
-  dcaUpdateKPIs();
-
-  // Gráfica
-  dcaDrawChart(sinDRIP.rows, conDRIP.rows);
-
-  // Tabla anual
-  dcaRenderYearTable(sinDRIP.rows, conDRIP.rows);
-
-  // Desglose por ticker
-  dcaRenderBreakdown(sinDRIP.final, conDRIP.final, monthly, years);
-
-  // Label
-  const divLabel = avgDiv>0 ? ` · DRIP ${avgDiv.toFixed(1)}%` : '';
-  document.getElementById('dca-results-label').textContent = `$${monthly}/mes · ${years} años · ${ret}%/año${divLabel}`;
-
-  // Mostrar resultados
-  document.getElementById('dca-results').style.display='block';
-  document.getElementById('dca-results').scrollIntoView({behavior:'smooth', block:'start'});
-}
-
-function dcaToggleMode(mode){
-  dcaMode = mode;
-  document.getElementById('dca-tog-sin').classList.toggle('active', mode==='sin');
-  document.getElementById('dca-tog-con').classList.toggle('active', mode==='con');
-  if(dcaLastResult){
-    dcaUpdateKPIs();
-    // Re-dibujar gráfica destacando la curva activa
-    dcaDrawChart(dcaLastResult.sinDRIP.rows, dcaLastResult.conDRIP.rows);
-  }
-}
-
-function dcaUpdateKPIs(){
-  if(!dcaLastResult) return;
-  const r = dcaMode==='con' ? dcaLastResult.conDRIP : dcaLastResult.sinDRIP;
-  document.getElementById('dca-kpi-final').textContent    = fmt(r.final);
-  document.getElementById('dca-kpi-invested').textContent = fmt(r.invested);
-  document.getElementById('dca-kpi-gain').textContent     = '+'+fmt(r.gain);
-}
-
-// ── Gráfica SVG ───────────────────────────────────────────────────
-function dcaDrawChart(sinRows, conRows){
-  const svg   = document.getElementById('dca-chart-svg');
-  const W=360, H=180, padL=42, padR=12, padT=12, padB=28;
-  const plotW = W-padL-padR, plotH = H-padT-padB;
-
-  const allVals = [...sinRows.map(r=>r.value), ...conRows.map(r=>r.value), ...sinRows.map(r=>r.invested)];
-  const maxV = Math.max(...allVals);
-  const minV = 0;
-  const range = maxV - minV || 1;
-
-  const scaleX = i => padL + (i/(sinRows.length-1||1)) * plotW;
-  const scaleY = v => padT + plotH - ((v-minV)/range)*plotH;
-
-  const linePath = rows => rows.map((r,i)=>`${i===0?'M':'L'}${scaleX(i).toFixed(1)},${scaleY(r.value).toFixed(1)}`).join(' ');
-  const linePathInvested = rows => rows.map((r,i)=>`${i===0?'M':'L'}${scaleX(i).toFixed(1)},${scaleY(r.invested).toFixed(1)}`).join(' ');
-
-  // Area fill bajo la curva conDRIP
-  const areaConDRIP = `${conRows.map((r,i)=>`${i===0?'M':'L'}${scaleX(i).toFixed(1)},${scaleY(r.value).toFixed(1)}`).join(' ')} L${scaleX(conRows.length-1).toFixed(1)},${scaleY(0).toFixed(1)} L${scaleX(0).toFixed(1)},${scaleY(0).toFixed(1)} Z`;
-
-  // Y-axis labels
-  const yTicks = [0, 0.25, 0.5, 0.75, 1].map(f=>minV+range*f);
-  const yLabels = yTicks.map(v=>{
-    const y = scaleY(v);
-    const label = v>=1000000 ? (v/1000000).toFixed(1)+'M' : v>=1000 ? (v/1000).toFixed(0)+'K' : v.toFixed(0);
-    return `<text x="${padL-5}" y="${y.toFixed(1)}" text-anchor="end" dominant-baseline="middle" font-size="8" fill="var(--text3)" font-family="'DM Mono',monospace">${label}</text>`;
-  }).join('');
-
-  // X-axis labels (years)
-  const xLabels = sinRows.filter((_,i)=>i===0||((i+1)%Math.ceil(sinRows.length/5)===0)||(i===sinRows.length-1))
-    .map(r=>{
-      const i = r.yr-1;
-      return `<text x="${scaleX(i).toFixed(1)}" y="${(H-padB+14).toFixed(1)}" text-anchor="middle" font-size="8" fill="var(--text3)" font-family="'DM Mono',monospace">Año ${r.yr}</text>`;
-    }).join('');
-
-  svg.innerHTML = `
-    <defs>
-      <linearGradient id="dca-grad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="var(--gain)" stop-opacity="0.18"/>
-        <stop offset="100%" stop-color="var(--gain)" stop-opacity="0.01"/>
-      </linearGradient>
-    </defs>
-    <!-- Grid lines -->
-    ${[0.25,0.5,0.75,1].map(f=>`<line x1="${padL}" y1="${scaleY(minV+range*f).toFixed(1)}" x2="${W-padR}" y2="${scaleY(minV+range*f).toFixed(1)}" stroke="var(--border)" stroke-width="1"/>`).join('')}
-    <!-- Area DRIP -->
-    <path d="${areaConDRIP}" fill="url(#dca-grad)"/>
-    <!-- Invertido (gris) -->
-    <path d="${linePathInvested(sinRows)}" fill="none" stroke="var(--text3)" stroke-width="1.5" stroke-dasharray="4 3"/>
-    <!-- Sin DRIP (accent) -->
-    <path d="${linePath(sinRows)}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
-    <!-- Con DRIP (gain) -->
-    <path d="${linePath(conRows)}" fill="none" stroke="var(--gain)" stroke-width="2.5" stroke-linecap="round"/>
-    <!-- Punto final Con DRIP -->
-    <circle cx="${scaleX(conRows.length-1).toFixed(1)}" cy="${scaleY(conRows[conRows.length-1].value).toFixed(1)}" r="4" fill="var(--gain)"/>
-    <!-- Punto final Sin DRIP -->
-    <circle cx="${scaleX(sinRows.length-1).toFixed(1)}" cy="${scaleY(sinRows[sinRows.length-1].value).toFixed(1)}" r="3" fill="var(--accent)"/>
-    ${yLabels}
-    ${xLabels}
-  `;
-}
-
-// ── Tabla anual ───────────────────────────────────────────────────
-function dcaRenderYearTable(sinRows, conRows){
-  const wrap = document.getElementById('dca-year-rows');
-  const years = parseInt(document.getElementById('dca-years').value)||10;
-  // Mostrar cada año o cada 2 si hay muchos
-  const step  = years > 20 ? 5 : years > 10 ? 2 : 1;
-  const filtered = sinRows.filter(r=>r.yr%step===0||r.yr===1||r.yr===years);
-
-  wrap.innerHTML = filtered.map(r=>{
-    const con = conRows.find(c=>c.yr===r.yr);
-    const hl  = r.yr===years ? ' highlight' : '';
-    const gainDRIP = con ? con.gain : r.gain;
-    return `<div class="dca-year-row${hl}">
-      <span class="dca-year-cell">Año ${r.yr}</span>
-      <span class="dca-year-cell">${fmt(r.invested,0)}</span>
-      <span class="dca-year-cell accent">${fmt(r.value,0)}</span>
-      <span class="dca-year-cell gain">${fmt(con?.value||r.value,0)}</span>
-      <span class="dca-year-cell gain">+${fmt(gainDRIP,0)}</span>
+  // Tabla
+  document.getElementById('dca-table').innerHTML=`
+    <div class="dca-tbl">
+      <div class="dca-thead">
+        <span class="dca-th" style="text-align:left">Año</span>
+        <span class="dca-th">Capital</span>
+        <span class="dca-th">Aportado</span>
+        <span class="dca-th">Ganancia</span>
+      </div>
+      ${showRows.map(r=>`
+        <div class="dca-row${r.yr===years?' milestone':''}">
+          <span class="dca-cell">${r.yr}</span>
+          <span class="dca-cell accent">${fmt(r.balance,0)}</span>
+          <span class="dca-cell">${fmt(r.contributed,0)}</span>
+          <span class="dca-cell gain">+${fmt(r.profit,0)}</span>
+        </div>`).join('')}
     </div>`;
-  }).join('');
-}
 
-// ── Desglose por ticker ───────────────────────────────────────────
-function dcaRenderBreakdown(totalSin, totalCon, monthly, years){
-  const wrap    = document.getElementById('dca-breakdown-rows');
-  const wrapEl  = document.getElementById('dca-breakdown-wrap');
-  if(!dcaTickers.length){ wrapEl.style.display='none'; return; }
-  wrapEl.style.display='block';
-  const totalInvested = monthly*12*years + (parseFloat(document.getElementById('dca-initial').value)||0);
-  wrap.innerHTML = dcaTickers.map(d=>{
-    const frac   = d.alloc/100;
-    const valSin = totalSin * frac;
-    const valCon = totalCon * frac;
-    const inv    = totalInvested * frac;
-    return `<div class="dca-bk-row">
-      <span class="dca-bk-cell" style="color:${d.color}">${d.ticker}</span>
-      <span class="dca-bk-cell" style="color:var(--text3)">${d.alloc}%</span>
-      <span class="dca-bk-cell accent">${fmt(valSin,0)}</span>
-      <span class="dca-bk-cell gain">${fmt(valCon,0)}</span>
+  // Bar chart — muestra aportado vs ganancia por año visible
+  const maxVal = Math.max(...showRows.map(r=>r.balance));
+  document.getElementById('dca-chart').innerHTML = showRows.map(r=>{
+    const contribW = (r.contributed/maxVal*100).toFixed(1);
+    const profitW  = (r.profit>0?(r.profit/maxVal*100):0).toFixed(1);
+    return`<div class="dca-bar-row">
+      <span class="dca-bar-label">Año ${r.yr}</span>
+      <div class="dca-bar-track">
+        <div class="dca-bar-contributed" style="width:${contribW}%"></div>
+        <div class="dca-bar-profit" style="left:${contribW}%;width:${profitW}%"></div>
+      </div>
+      <span class="dca-bar-val">${fmt(r.balance,0)}</span>
     </div>`;
   }).join('');
 }
@@ -1934,7 +1654,6 @@ function dcaRenderBreakdown(totalSin, totalCon, monthly, years){
 // ═══════════════════════════════════════════
 loadLots();
 loadProj();
-dcaLoad();
 updateOnlineStatus();
 
 // Splash screen
